@@ -1,0 +1,27 @@
+<div class="sidebar" data-color="danger" data-background-color="white" data-image="./assets/img/sidebar-1.jpg">
+	<div class="logo">
+		<a routerLink="/assortiment" class="simple-text"> Smart Assistant </a>
+	</div>
+	<div class="sidebar-wrapper">
+		<ul class="nav">
+			<li routerLinkActive="active" *ngFor="let link of links" class="{{ link.class }} nav-item">
+				<a class="nav-link" [routerLink]="[link.path]">
+					<i class="material-icons">{{ link.icon }}</i>
+					<span>{{ link.title }}</span>
+				</a>
+			</li>
+			<li class="exit active-pro nav-item pointer">
+				<a class="nav-link" (click)="exit($event)">
+					<i class="material-icons">exit_to_app</i>
+					<span>Exit</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="block"></div>
+<main class="wrapper">
+	<div class="content">
+		<router-outlet></router-outlet>
+	</div>
+</main>

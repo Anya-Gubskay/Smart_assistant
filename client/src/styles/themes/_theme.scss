@@ -1,0 +1,29 @@
+@use '../../../node_modules/@angular/material' as mat;
+@import '../../../node_modules/@angular/material/theming';
+@import 'colors';
+@import 'light';
+@import 'mixins';
+@import 'fonts';
+@import 'material-overwrites/overwrites';
+
+:root {
+	@include var-range(--padding, 1rem);
+	@include var-range(--margin, 1rem);
+	@include var-range(--border-radius, 0.25rem);
+	@include var-range(--transition-duration, 0.4s);
+
+	--icons-font: 'Material Icons';
+	--app-font: Quicksand, sans-serif;
+	--action-icon-size: 1.25rem;
+	--border-radius: 0.3rem;
+	--app-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+
+	@include var-hsla-colors($base-color);
+	@include var-hsla-colors($light-theme-colors);
+	@include var-all($app-fonts);
+	@include mat.all-component-themes($light-theme);
+	@extend %material-overwrites;
+
+	background: var(--bg);
+	color: var(--secondary);
+}

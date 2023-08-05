@@ -1,0 +1,27 @@
+<div
+  (mouseenter)="stopProgressBar()"
+  (mouseleave)="showProgressBar()"
+  class="toast-wrapper"
+  [style.--bg]="settings.color"
+  [@openClose]="toastService.data && toastService.data.show ? 'open' : 'closed'"
+>
+  <div class="inner-wrapper">
+    <div class="wrapper-content" *ngIf="toastService.data">
+      <mat-icon class="info-icon">{{settings.icon}}</mat-icon>
+      <div class="toast-content">
+        <div class="toast-title">
+          {{ toastService.data.title }}
+        </div>
+        <div class="toast-text">
+          {{ toastService.data.content }}
+        </div>
+      </div>
+    </div>
+    <mat-icon class="close-icon pointer" (click)="hideToast()">close</mat-icon>
+  </div>
+
+  <div
+    class="progress-bar"
+    #element
+  ></div>
+</div>

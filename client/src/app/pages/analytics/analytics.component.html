@@ -1,0 +1,20 @@
+<div class="page-title">
+	<h1>Analytics</h1>
+</div>
+<ng-container *ngIf="loadingStatus?.loaded; else loader">
+	<div>
+		<div class="average-price">
+			<h2>
+				Average check: <strong>{{ data?.average }} $</strong>
+			</h2>
+		</div>
+		<div class="analytics-block">
+			<div [chart]="chartRevenue" class="highcharts-wrapper"></div>
+			<div [chart]="chartOrder" class="highcharts-wrapper"></div>
+		</div>
+	</div>
+</ng-container>
+
+<ng-template #loader>
+	<app-loader></app-loader>
+</ng-template>

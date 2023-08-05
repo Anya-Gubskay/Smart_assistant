@@ -1,0 +1,24 @@
+@import 'mixins/common.mixin';
+
+:host {
+	.cards {
+		display: grid;
+		gap: 2rem;
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.page-title {
+		@include flex-vertical-align;
+		margin-bottom: var(--margin-l);
+
+		.title {
+			font-size: var(--mat-headline-font-size);
+		}
+
+		.icon {
+			cursor: help;
+			margin-left: var(--margin);
+			@include icon-size(2rem);
+		}
+	}
+}

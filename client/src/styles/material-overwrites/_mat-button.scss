@@ -1,0 +1,55 @@
+@import 'functions';
+
+button .mat-icon {
+	margin-right: var(--margin-xs);
+}
+
+button.mat-flat-button[color='primary'] {
+	background-color: var(--content-secondary);
+}
+
+button.mat-flat-button[color='grayish'] {
+	background-color: var(--third);
+	color: var(--white);
+}
+
+button.mdc-button {
+	text-transform: uppercase;
+	width: max-content;
+}
+
+button.mat-raised-button[color='accent'] {
+	background-color: var(--secondary);
+}
+
+button.mat-button[color='transparent']:not([disabled]) {
+	background: transparent;
+	color: var(--white);
+}
+
+button.mat-button[color='transparent'][disabled] {
+	border-color: toHSLA(#e0e0e0);
+}
+
+button.mat-button[color='white']:not([disabled]) {
+	background-color: var(--white);
+	color: var(--white);
+}
+
+button.mat-flat-button[color='red']:not([disabled]),
+button.mat-button[color='red']:not([disabled]) {
+	background-color: var(--primary);
+	color: var(--white);
+}
+
+button.mat-flat-button[color='orange']:not([disabled]),
+button.mat-button[color='orange']:not([disabled]) {
+	background-color: var(--warning);
+	color: var(--white);
+}
+
+button.mat-flat-button[color='dark']:not([disabled]),
+button.mat-button[color='dark']:not([disabled]) {
+	background-color: var(--secondary);
+	color: var(--white);
+}

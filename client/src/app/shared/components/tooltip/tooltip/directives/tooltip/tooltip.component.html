@@ -1,0 +1,9 @@
+<div
+	class="tooltip"
+	[ngClass]="['tooltip--' + tooltip.position, 'tooltip--' + tooltip.theme]"
+	[class.tooltip--visible]="tooltip.visible"
+	[style.left.px]="tooltip.left"
+	[style.top.px]="tooltip.top"
+>
+	<span [innerHTML]="tooltip.title"></span>
+</div>

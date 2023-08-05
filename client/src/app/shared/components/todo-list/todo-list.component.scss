@@ -1,0 +1,33 @@
+@import 'mixins/common.mixin';
+
+:host {
+	.container-list {
+		max-height: calc(100% - 2*var(--padding-l));
+		overflow: auto;
+	}
+
+	.container-empty {
+		height: 10rem;
+	}
+
+	.container-empty {
+		@include flex-centered;
+	}
+
+	.title, .icon {
+		color: var(--content-primary)
+	}
+
+	.list-item {
+		@include flex-space-between;
+		border: var(--third) solid 2px;
+		border-radius: var(--border-radius);
+		color: var(--content-primary);
+		margin-bottom: var(--margin-s);
+		padding: var(--padding);
+
+		&:hover {
+			background-color: var(--btn-hover);
+		}
+	}
+}

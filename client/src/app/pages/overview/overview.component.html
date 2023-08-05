@@ -1,0 +1,13 @@
+<div class="page-title">
+	<span class="title">Review for yesterday ({{ date }})</span>
+	<mat-icon class="icon" [tooltip]="TOOLTIP_SETTINGS">info_outline</mat-icon>
+</div>
+<ng-container *ngIf="loadingStatus?.loaded; else loader">
+	<div class="cards" *ngIf="loadingStatus?.loaded">
+		<app-card-review [data]="data?.gain" [config]="CONFIG_REVENUE"></app-card-review>
+		<app-card-review [data]="data?.orders" [config]="CONFIG_ORDERS"></app-card-review>
+	</div>
+</ng-container>
+<ng-template #loader>
+	<app-loader></app-loader>
+</ng-template>

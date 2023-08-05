@@ -1,0 +1,14 @@
+<div class="page-title" *ngIf="loadingStatus?.loaded; else loader">
+	<h1>Orders</h1>
+</div>
+<div class="container-cards">
+	<div class="card pointer" *ngFor="let item of categories" [routerLink]="['/order', item._id]">
+		<img [src]="item.imageSrc" />
+		<h2 class="card-title">{{ item.name }}</h2>
+	</div>
+</div>
+<router-outlet></router-outlet>
+
+<ng-template #loader>
+	<app-loader></app-loader>
+</ng-template>

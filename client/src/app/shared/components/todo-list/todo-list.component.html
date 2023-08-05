@@ -1,0 +1,21 @@
+<div class="container-list" [ngClass]="{'container-empty': !items?.length}" *ngIf="!loadingStatus?.loading; else loader">
+	<ng-container *ngIf="items?.length; else empty">
+		<div
+			[@fadeAnimation]="'in'"
+			*ngFor="let item of items; trackBy: trackByFn"
+			(click)="clickItem.emit(item)"
+			class="list-item pointer"
+		>
+			<span class="title">{{ item.name }}</span>
+			<mat-icon class="icon" (click)="iconClick($event, item)" [tooltip]="TOOLTIP_SETTINGS"
+				>remove_shopping_cart</mat-icon
+			>
+		</div>
+	</ng-container>
+</div>
+<ng-template #empty>
+	<div class="container-empty">There are no data</div>
+</ng-template>
+<ng-template #loader>
+	<app-loader></app-loader>
+</ng-template>

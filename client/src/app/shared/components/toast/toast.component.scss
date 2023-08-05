@@ -1,0 +1,62 @@
+@import 'mixins/common.mixin';
+
+:host {
+	--bg: var(--error);
+
+	.toast-wrapper {
+		background: var(--bg);
+		border-radius: var(--border-radius);
+		bottom: var(--padding-l);
+		color: var(--white);
+		max-width: 26rem;
+		min-width: 20rem;
+		opacity: 0;
+		position: fixed;
+		right: var(--padding-l);
+		word-break: break-word;
+		z-index: 100;
+
+		.progress-bar {
+			background: var(--bg);
+			filter: brightness(0.5);
+		}
+	}
+
+	.toast-title {
+		font-size: var(--mat-display-6-font-size);
+		font-weight: var(--default-font-weight);
+		text-transform: capitalize;
+	}
+
+	.inner-wrapper {
+		padding: var(--padding-s);
+		position: relative;
+	}
+
+	.progress-bar {
+		height: 0.5rem;
+		transition: width 0.1s ease-out;
+		width: 100%;
+	}
+
+	.close-icon {
+		position: absolute;
+		right: 0.5rem;
+		top: 0.5rem;
+	}
+
+	.info-icon {
+		margin-right: var(--margin);
+		overflow: visible;
+		@include icon-size(3rem);
+	}
+
+	.wrapper-content {
+		align-items: center;
+		display: flex;
+	}
+
+	.toast-text {
+		margin-top: var(--margin-s);
+	}
+}

@@ -1,0 +1,48 @@
+/* stylelint-disable scss/no-global-function-names */
+@use 'sass:color' as color;
+@import 'functions';
+
+@mixin defineColor($name, $color) {
+	#{$name}-h: color.hue($color);
+	#{$name}-s: color.saturation($color);
+	#{$name}-l: color.lightness($color);
+	#{$name}: unquote(
+		'hsla(#{color.hue($color)}, #{color.saturation($color)}, #{color.lightness($color)}, #{color.alpha($color)})'
+	);
+}
+
+@mixin defineColorHSL($color, $hue, $saturation, $lightness) {
+	#{$color}: unquote('hsl(#{$hue}, #{$saturation}, #{$lightness})');
+	#{$color}-h: #{$hue};
+	#{$color}-s: #{$saturation};
+	#{$color}-l: #{$lightness};
+}
+
+@mixin var-range($variable, $value) {
+	// Default
+	#{$variable}: $value;
+
+	// Smaller values
+	#{$variable}-s: calc(var(#{$variable}) / 2);
+	#{$variable}-xs: calc(var(#{$variable}) / 4);
+
+	// Bigger values
+	#{$variable}-l: calc(var(#{$variable}) * 2);
+	#{$variable}-xl: calc(var(#{$variable}) * 4);
+}
+
+@mixin var-hsla-colors($base-color) {
+	@each $name, $color in $base-color {
+		--#{"" + $name}: #{toHSLA($color)};
+		--#{"" + $name + '-h'}: #{color.hue($color)};
+		--#{"" + $name + '-s'}: #{color.saturation($color)};
+		--#{"" + $name + '-l'}: #{color.lightness($color)};
+	}
+}
+
+@mixin var-all($variables) {
+	@each $name, $value in $variables {
+		--#{"" + $name}: #{$value};
+	}
+}
+

@@ -1,0 +1,30 @@
+@import 'mixins/common.mixin';
+
+:host {
+	.page-title {
+		@include flex-space-between;
+		margin-bottom: var(--margin);
+	}
+
+	.container-cards {
+		display: grid;;
+		grid-gap: var(--padding);
+		grid-template-columns: repeat( auto-fill, minmax(20rem, 1fr) );
+	}
+
+	.card {
+		border-radius: var(--border-radius);
+		box-shadow: var(--app-shadow);
+		padding: var(--padding-l);
+		text-align: center;
+
+		&-title {
+			color: var(--content-secondary);
+		}
+	}
+
+	img {
+		@include box(15rem);
+		margin-bottom: var(--margin);
+	}
+}

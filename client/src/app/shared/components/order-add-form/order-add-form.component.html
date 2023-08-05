@@ -1,0 +1,53 @@
+<div *ngIf="loadingStatus?.loaded || !isEdit; else loader">
+  <ng-container *ngIf="order.list.length !== 0; else empty">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Title</th>
+      <th>Cost</th>
+      <th>Total</th>
+      <th>Quantity</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let item of order.list">
+      <td>{{item.name}}</td>
+      <td>{{item.cost}} $</td>
+      <td>{{item.total}} $</td>
+      <td>
+        <div>
+          <mat-form-field appearance="outline"  class="example-form-field" *ngIf="isEdit; else text">
+            <input matInput type="number" min="0" [(ngModel)]="item.quantity" (input)="order.count(item)">
+          </mat-form-field>
+          <ng-template #text>
+            <p>{{item.quantity}}</p>
+          </ng-template>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="actions">
+    <h2 class="center">
+      Total cost: <strong>{{ order.price }} $</strong>
+    </h2>
+    <button
+    *ngIf="isEdit"
+	mat-flat-button
+		class="right"
+    [disabled]="order.price === 0"
+		(click)="order.resetOrder()"
+	>
+		Reset Order
+	</button>
+  </div>
+</ng-container>
+  <ng-template #empty>
+    <div class="center">No positions yet</div>
+  </ng-template>
+</div>
+
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>

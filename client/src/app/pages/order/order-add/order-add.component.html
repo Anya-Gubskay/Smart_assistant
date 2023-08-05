@@ -1,0 +1,14 @@
+<div class="page-title">
+	<h1>
+		<a routerLink="/order">Order</a>
+		Add prodactions
+	</h1>
+	<button mat-raised-button color="primary" [disabled]="order.price === 0" (click)="complete()">
+		Add order
+	</button>
+</div>
+<app-order-add-form
+	[loadingStatus]="positionsLoadingStatus"
+	[isEdit]="true"
+	(addOrder)="addOrder.emit($event)"
+></app-order-add-form>

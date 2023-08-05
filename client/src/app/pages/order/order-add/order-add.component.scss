@@ -1,0 +1,8 @@
+@import 'mixins/common.mixin';
+
+:host {
+	.page-title {
+		@include flex-space-between;
+		margin-bottom: var(--margin);
+	}
+}

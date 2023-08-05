@@ -1,0 +1,93 @@
+@mixin flex-centered() {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+}
+
+@mixin flex-column {
+	display: flex;
+	flex-direction: column;
+}
+
+@mixin flex-vertical-align {
+	align-items: center;
+	display: flex;
+}
+
+@mixin flex-horizon-align {
+	display: flex;
+	justify-content: center;
+}
+
+
+@mixin flex-wrap {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+
+@mixin flex-space-evenly {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+@mixin flex-space-around {
+	display: flex;
+	justify-content: space-around;
+}
+
+@mixin flex-space-between {
+	display: flex;
+	justify-content: space-between;
+}
+
+@mixin flex-baseline() {
+	align-items: baseline;
+	display: flex;
+}
+
+@mixin flex-start() {
+	display: flex;
+	justify-content: flex-start;
+}
+
+@mixin flex-end {
+	display: flex;
+	justify-content: flex-end;
+}
+
+
+@mixin size($height, $width) {
+	height: $height;
+	width: $width;
+}
+
+
+@mixin icon-size($size) {
+	font-size: $size;
+	height: $size;
+	line-height: $size !important;
+	width: $size;
+}
+
+
+@mixin cdk-virtual-height($height: 100%) {
+	cdk-virtual-scroll-viewport {
+		height: $height;
+		position: relative;
+	}
+}
+
+
+@mixin box($width, $height: $width) {
+	height: $height;
+	width: $width;
+}
+
+@mixin position($type, $top, $right, $bottom, $left) {
+	bottom: $bottom;
+	left: $left;
+	position: $type;
+	right: $right;
+	top: $top;
+}

@@ -1,0 +1,20 @@
+@import 'mixins/common.mixin';
+
+:host {
+	.wrapper-dialog {
+		@include flex-centered;
+		background-color: rgba(0, 0, 0, .75);
+		inset: 0;
+		/* enables scrolling for tall modals */
+		overflow: auto;
+		position: fixed;
+		/* z-index must be higher than everything else on the page */
+		z-index: 100;
+	}
+
+	.content-dialog {
+		background: var(--white);
+		max-height: 70%;
+		padding: var(--padding);
+	}
+}

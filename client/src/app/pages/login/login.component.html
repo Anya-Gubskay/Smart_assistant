@@ -1,0 +1,69 @@
+<mat-card>
+	<h1 class="title">{{ title }}</h1>
+	<form class="example-form" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+		<mat-form-field class="example-full-width">
+			<mat-label>Email:</mat-label>
+			<input
+				type="email"
+				[formControlName]="FormFields.Email"
+				matInput
+				placeholder="Email adress..."
+			/>
+			<mat-error *ngIf="formGroup.controls[FormFields.Email].hasError('email')">
+				Enter a valid email
+			</mat-error>
+			<mat-error *ngIf="formGroup.controls[FormFields.Email].hasError('required')">
+				Email must not be empty
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field class="example-full-width">
+			<mat-label>Password:</mat-label>
+			<input
+				matInput
+				placeholder="***********"
+				[formControlName]="FormFields.Password"
+				[type]="hide ? 'password' : 'text'"
+			/>
+			<button
+				mat-icon-button
+				matSuffix
+				(click)="hide = !hide"
+				[attr.aria-label]="'Hide password'"
+				[attr.aria-pressed]="hide"
+			>
+				<mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+			</button>
+			<mat-hint
+				>Min characters {{ MIN_PASSWORD }}:
+				{{ formGroup.controls[FormFields.Password].value?.length }}
+			</mat-hint>
+			<mat-error *ngIf="formGroup.controls[FormFields.Password].hasError('required')">
+				Password must not be empty
+			</mat-error>
+
+			<mat-error
+				*ngIf="
+					formGroup.controls[FormFields.Password].errors?.['minlength']?.[
+						'requiredLength'
+					]
+				"
+			>
+				Password must be greater
+				{{
+					formGroup.controls[FormFields.Password].errors?.['minlength']?.[
+						'requiredLength'
+					]
+				}}
+				characters.
+			</mat-error>
+		</mat-form-field>
+		<button
+			mat-raised-button
+			color="primary"
+			type="submit"
+			[disabled]="formGroup.invalid || formGroup.disabled"
+		>
+			{{ title }}
+		</button>
+	</form>
+</mat-card>

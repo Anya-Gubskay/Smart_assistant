@@ -1,0 +1,40 @@
+@import 'mixins/common.mixin';
+
+:host {
+	.form-product {
+		@include flex-column;
+		padding: 1rem 0;
+		width: 50rem;
+	}
+
+	.btn {
+		margin-top: 1rem;
+	}
+
+	.title-btn {
+		margin-left: var(--margin-s);
+	}
+
+	.page-title {
+		@include flex-space-between;
+	}
+
+	.content {
+		display: flex;
+
+		.container-image {
+			box-sizing: border-box;
+			margin-left: var(--margin-l);
+
+			img{
+				@include box(15rem);
+			}
+		}
+	};
+
+	.file-btn {
+		display: none;
+	}
+
+
+}

@@ -1,0 +1,9 @@
+.mat-standard-chip::after,
+.mat-standard-chip:focus::after {
+	background: none !important;
+	opacity: 1 !important;
+}
+
+.mat-standard-chip:not(.mat-chip-selected):hover {
+	background: var(--grey) !important;
+}

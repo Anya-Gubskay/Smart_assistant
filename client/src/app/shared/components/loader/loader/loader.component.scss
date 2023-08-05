@@ -1,0 +1,90 @@
+@import 'mixins/common.mixin';
+
+:host {
+	@include flex-centered;
+	height: calc(100% - 3rem);
+
+	.loader {
+		@include box(5rem);
+		border-radius: 50%;
+		color: var(--content-primary);
+		perspective: 80rem;
+		transform: rotateZ(45deg);
+	}
+
+	.loader::before,
+	.loader::after {
+		animation: 1s spin linear infinite;
+		border-radius: 50%;
+		content: '';
+		display: block;
+		height: inherit;
+		left: 0;
+		position: absolute;
+		top: 0;
+		transform: rotateX(70deg);
+		width: inherit;
+	}
+
+	.loader::after {
+		animation-delay: .4s;
+		color: var(--black);
+		transform: rotateY(70deg);
+	}
+
+	@keyframes rotate {
+		0% {
+			transform: translate(-50%, -50%) rotateZ(0deg);
+		}
+
+		100% {
+			transform: translate(-50%, -50%) rotateZ(360deg);
+		}
+	}
+
+	@keyframes rotateccw {
+		0% {
+			transform: translate(-50%, -50%) rotate(0deg);
+		}
+
+		100% {
+			transform: translate(-50%, -50%) rotate(-360deg);
+		}
+	}
+
+	@keyframes spin {
+		0%,
+		100% {
+			box-shadow: .2em 0 0 0 currentcolor;
+		}
+
+		12% {
+			box-shadow: .2em .2em 0 0 currentcolor;
+		}
+
+		25% {
+			box-shadow: 0 .2em 0 0 currentcolor;
+		}
+
+		37% {
+			box-shadow: -.2em .2em 0 0 currentcolor;
+		}
+
+		50% {
+			box-shadow: -.2em 0 0 0 currentcolor;
+		}
+
+		62% {
+			box-shadow: -.2em -.2em 0 0 currentcolor;
+		}
+
+		75% {
+			box-shadow: 0 -.2em 0 0 currentcolor;
+		}
+
+		87% {
+			box-shadow: .2em -.2em 0 0 currentcolor;
+		}
+	}
+}
+

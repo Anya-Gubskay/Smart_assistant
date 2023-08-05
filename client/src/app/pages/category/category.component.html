@@ -1,0 +1,55 @@
+<div class="page-title">
+	<h1>
+		<a routerLink="/categories">Categories</a>
+		{{ isNewPage ? 'Add' : 'Edit' }} category
+	</h1>
+</div>
+<ng-container
+	*ngIf="isNewPage || (loadingStatus?.loaded && !positionsLoadingStatus?.loading); else loader"
+>
+	<div class="content">
+		<form class="form-product" [formGroup]="formGroup">
+			<mat-form-field>
+				<mat-label>Name:</mat-label>
+				<input type="text" formControlName="name" matInput placeholder="Name" id="name" />
+				<mat-error *ngIf="formGroup.controls['name'].hasError('required')">
+					Name category must not be empty
+				</mat-error>
+			</mat-form-field>
+			<div>
+				<input type="file" (change)="onFileSelect($event)" class="file-btn" #inputFile />
+				<button mat-raised-button color="primary" class="btn" (click)="inputFile.click()">
+					<mat-icon class="close-icon pointer">cloud_upload</mat-icon>
+					<span class="title-btn">Upload image</span>
+				</button>
+			</div>
+			<button
+				mat-raised-button
+				color="primary"
+				class="btn"
+				(click)="saveChange()"
+				[disabled]="formGroup.invalid || formGroup.disabled || !imagePreview"
+			>
+				Save Changes
+			</button>
+		</form>
+		<div class="container-image">
+			<img class="image" *ngIf="imagePreview" [src]="imagePreview" />
+		</div>
+	</div>
+	<div class="page-title" *ngIf="category">
+		<h1>Positions</h1>
+		<button mat-raised-button color="primary" (click)="openModal()">Add Position</button>
+	</div>
+
+	<app-todo-list
+		*ngIf="category"
+		[items]="positions"
+		[loadingStatus]="positionsLoadingStatus"
+		(clickItem)="onClickItem($event)"
+		(clickIcon)="deletePosition.emit($event)"
+	></app-todo-list>
+</ng-container>
+<ng-template #loader>
+	<app-loader></app-loader>
+</ng-template>

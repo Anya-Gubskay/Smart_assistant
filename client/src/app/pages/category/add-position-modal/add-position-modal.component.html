@@ -1,0 +1,20 @@
+<div class="page-title">
+	<h1>Add position</h1>
+</div>
+<form class="example-form" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+	<mat-form-field [formGroup]="formGroup">
+		<mat-label>Name:</mat-label>
+		<input type="text" formControlName="name" matInput placeholder="Name" id="name" />
+		<mat-error *ngIf="formGroup.controls.name.hasError('required')"> Name category must not be empty </mat-error>
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>Price:</mat-label>
+		<input type="number" min="0" formControlName="cost" matInput placeholder="Cost" id="cost" />
+		<mat-error *ngIf="formGroup.controls.cost.hasError('required')"> Price must not be empty </mat-error>
+	</mat-form-field>
+  <div class="actions">
+    <button mat-flat-button (click)="modalService.closeModal()">Cancel</button>
+    <button mat-raised-button type="submit" color="primary" [disabled]="formGroup.invalid || formGroup.disabled">Save</button>
+  </div>
+</form>
+

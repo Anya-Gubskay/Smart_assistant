@@ -1,0 +1,41 @@
+@import 'mixins/common.mixin';
+
+:host {
+	align-items: center;
+	display: flex;
+	height: 2rem;
+	margin-bottom: var(--margin);
+	width: 100%;
+
+	.search-wrapper {
+		box-sizing: border-box;
+		display: flex;
+		height: 100%;
+		width: 100%;
+
+		.search-label {
+			@include flex-centered;
+			font-size: var(--mat-subheading-2-font-size);
+			margin-right: var(--margin);
+			white-space: nowrap;
+		}
+
+		.search-input {
+			border: solid 1px var(--third);
+			border-radius: var(--border-radius);
+			text-indent: var(--margin);
+			width: 100%;
+		}
+
+		.search-icon {
+			align-items: center;
+			display: flex;
+			justify-content: center;
+			width: 3rem;
+
+			&.icon-clear {
+				cursor: pointer;
+			}
+		}
+	}
+}

@@ -1,0 +1,10 @@
+<div class="page-title">
+	<h1>Categories</h1>
+	<button mat-raised-button color="primary" (click)="addCategory()">Add Categories</button>
+</div>
+<app-todo-list
+	[items]="categories"
+	[loadingStatus]="loadingStatus"
+	(clickItem)="onClickItem($event)"
+	(clickIcon)="removeCategory.emit($event)"
+></app-todo-list>

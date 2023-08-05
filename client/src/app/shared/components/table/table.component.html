@@ -1,0 +1,40 @@
+<ng-container *ngIf="loadingStatus?.loaded; else loader">
+<app-search *ngIf="isFilter" (valueChange)="applyFilter($event)"></app-search>
+<div
+	class="example-container mat-elevation-z8"
+	[ngClass]="{'width-filter': isFilter, 'width-title': title}"
+>
+	<mat-table [dataSource]="dataSource" matSort>
+		<ng-container *ngIf="columnsConfig.length">
+			<ng-container [matColumnDef]="column.property" *ngFor="let column of columnsConfig">
+				<mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!column.sortable">{{
+					column.title
+				}}</mat-header-cell>
+				<ng-container [ngSwitch]="column.type">
+					<ng-container *ngSwitchCase="ColumnsTypes.Button">
+						<mat-cell *matCellDef="let row">
+							<button mat-raised-button color="primary" (click)="clickButton($event, column, row)">
+								{{ column.title }}
+							</button>
+						</mat-cell>
+					</ng-container>
+					<ng-container *ngSwitchCase="ColumnsTypes.ButtonIcon">
+						<mat-cell *matCellDef="let row" (click)="clickButton($event, column, row)">
+							<mat-icon>{{ column.icon }}</mat-icon>
+						</mat-cell>
+					</ng-container>
+					<ng-container *ngSwitchDefault>
+						<mat-cell *matCellDef="let row"> {{ row[column.property] }} </mat-cell>
+					</ng-container>
+				</ng-container>
+			</ng-container>
+		</ng-container>
+		<mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+		<mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
+	</mat-table>
+</div>
+<mat-paginator [hidePageSize]="dataSource.data.length < MAX_NUMBER_PAGES" showFirstLastButtons [pageSize]="MAX_NUMBER_PAGES" [disabled]="dataSource.data.length < MAX_NUMBER_PAGES"></mat-paginator>
+</ng-container>
+<ng-template #loader>
+	<app-loader></app-loader>
+</ng-template>

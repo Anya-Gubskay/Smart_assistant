@@ -1,0 +1,18 @@
+:host {
+	.card {
+		background: var(--content-primary);
+		border-radius: var(--border-radius);
+		color: var(--white);
+		display: grid;
+		gap: var(--padding);
+		padding: var(--padding-l);
+
+		&-description {
+			height: 3rem;
+		}
+
+		&-percent {
+			font-weight: var(--default-font-weight);
+		}
+	}
+}

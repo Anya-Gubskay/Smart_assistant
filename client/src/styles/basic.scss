@@ -1,0 +1,45 @@
+@import 'mixins/common.mixin';
+@import './scroll';
+
+body {
+	@include box(100%);
+	font-size: 1rem;
+}
+
+body {
+	margin: 0;
+}
+
+div {
+	line-height: 1.4rem;
+}
+
+.active {
+	background: var(--content-active) !important;
+	color: var(--white) !important;
+
+	a {
+		color: var(--white) !important;
+	}
+}
+
+input:focus{
+	outline-color: var(--content-primary);
+}
+
+li {
+	list-style-type: none;
+}
+
+ul {
+	margin: 0;
+}
+
+a {
+	color: var(--content-primary);
+	text-decoration: none;
+	transition: color .3s;
+}
+
+
+

@@ -1,0 +1,10 @@
+:host {
+	.actions {
+		display: flex;
+		justify-content: flex-end;
+	}
+
+	.order-number {
+		color: var(--content-secondary);
+	}
+}

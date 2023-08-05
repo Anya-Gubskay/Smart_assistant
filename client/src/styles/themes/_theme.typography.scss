@@ -1,0 +1,49 @@
+@use '../../../node_modules/@angular/material' as mat;
+@import '@angular/material/theming';
+
+$mat-display-6-font-size: 1.5rem;
+$mat-display-5-font-size: 2rem;
+$mat-display-4-font-size: 4rem;
+$mat-display-3-font-size: 3.5rem;
+$mat-display-2-font-size: 3rem;
+$mat-display-1-font-size: 2.5rem;
+$mat-headline-font-size: 2rem;
+$mat-title-font-size: 1.5rem;
+$mat-subheading-2-font-size: 1rem;
+$mat-subheading-1-font-size: 0.86rem;
+$mat-body-2-font-size: 1rem;
+$mat-body-1-font-size: var(--font-size);
+$mat-caption-font-size: 0.75rem;
+
+$default-font-weight: 500;
+
+$mat-display-6-font: 300 $mat-display-6-font-size var(--app-font);
+$mat-display-5-font: 300 $mat-display-5-font-size var(--app-font);
+$mat-display-4-font: 300 $mat-display-4-font-size var(--app-font);
+$mat-display-3-font: $default-font-weight $mat-display-3-font-size var(--app-font);
+$mat-display-2-font: $default-font-weight $mat-display-2-font-size var(--app-font);
+$mat-display-1-font: $default-font-weight $mat-display-1-font-size var(--app-font);
+$mat-headline-font: $default-font-weight $mat-headline-font-size var(--app-font);
+$mat-title-font: $default-font-weight $mat-title-font-size var(--app-font);
+$mat-subheading-2-font: 500 $mat-subheading-2-font-size var(--app-font);
+$mat-subheading-1-font: $default-font-weight $mat-subheading-1-font-size var(--app-font);
+$mat-body-2-font: $default-font-weight $mat-body-2-font-size var(--app-font);
+$mat-body-1-font: $default-font-weight $mat-body-1-font-size var(--app-font);
+$mat-caption-font: $default-font-weight $mat-caption-font-size var(--app-font);
+
+// https://material.angular.io/guide/typography
+$custom-typography: mat.define-typography-config(
+	$font-family: var(--app-font),
+	$headline-6: mat.define-typography-level($mat-display-6-font-size, $mat-display-6-font-size, 300),
+	$headline-5: mat.define-typography-level($mat-display-5-font-size, $mat-display-5-font-size, 300),
+	$headline-4: mat.define-typography-level($mat-display-4-font-size, $mat-display-4-font-size, 300),
+	$headline-3: mat.define-typography-level($mat-display-3-font-size, $mat-display-3-font-size, 400),
+	$headline-2: mat.define-typography-level($mat-display-2-font-size, $mat-display-2-font-size * 1.07, 400),
+	$headline-1: mat.define-typography-level($mat-display-1-font-size, $mat-display-1-font-size * 1.18, 400),
+	$subtitle-2: mat.define-typography-level($mat-subheading-2-font-size, $mat-subheading-2-font-size * 1.75, 400),
+	$subtitle-1: mat.define-typography-level($mat-subheading-1-font-size, $mat-subheading-1-font-size * 1.6, 400),
+	$body-2: mat.define-typography-level($mat-body-2-font-size, $mat-body-2-font-size * 1.7, 400),
+	$body-1: mat.define-typography-level($mat-body-1-font-size, calc(#{$mat-body-1-font-size} * 1.43), 400),
+	$caption: mat.define-typography-level($mat-caption-font-size, $mat-caption-font-size * 1.67, 400),
+	$button: mat.define-typography-level(var(--font-size), 2rem, $default-font-weight)
+);

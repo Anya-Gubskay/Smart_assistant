@@ -1,0 +1,11 @@
+<div class="search-wrapper" [style.width] = "size">
+	<span class="search-label" *ngIf="label">{{ label }}</span>
+	<input
+		class="search-input"
+		type="text"
+		[placeholder]="placeholder || SEARCH_PLACEHOLDER_MSG"
+		[formControl]="inputControl"
+	/>
+	<i class="search-icon icon-clear material-icons" *ngIf="value" (click)="clearSearch()">close</i>
+	<i class="search-icon material-icons" *ngIf="showSearchIcon && !value">search</i>
+</div>

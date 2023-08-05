@@ -1,0 +1,42 @@
+:host {
+	$loader-size: 2.25rem;
+	$animation-duration: 1.5s;
+
+	display: block;
+	height: $loader-size;
+	margin: 0 auto;
+	width: $loader-size;
+
+	.loader-mini {
+		height: $loader-size;
+		position: relative;
+		width: $loader-size;
+	}
+
+	.double-pulse {
+		animation: double-pulse $animation-duration infinite ease-out;
+		border-radius: 100%;
+		height: $loader-size;
+		left: 0;
+		margin: 0 auto;
+		opacity: 0.4;
+		position: absolute;
+		top: 0;
+		width: $loader-size;
+
+		&:nth-of-type(2) {
+			animation-delay: -500ms;
+		}
+	}
+
+	@keyframes double-pulse {
+		0% {
+			transform: scale(0);
+		}
+
+		100% {
+			opacity: 0;
+			transform: scale(1);
+		}
+	}
+}

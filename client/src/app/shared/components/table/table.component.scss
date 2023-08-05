@@ -1,0 +1,56 @@
+:host {
+	--height-search: 2rem;
+	--height-pagination: 3.5rem;
+
+	.example-container {
+		display: flex;
+		flex-direction: column;
+		height: calc(100% - var(--height-search) - var(--height-pagination) - 2*var(--padding-l));
+		min-width: 300px;
+		overflow: auto;
+
+
+		&.width-filter {
+			// height: calc(100% - 3rem);
+		}
+
+		&.width-title {
+			height: calc(100% - 1.5rem);
+		}
+	}
+
+	.example-header {
+		min-height: 64px;
+		padding: 8px 24px 0;
+	}
+
+	.title {
+		text-align: center;
+	}
+
+	.mat-form-field {
+		font-size: 14px;
+		width: 100%;
+	}
+
+	.mat-mdc-table {
+
+		max-height: 500px;
+	}
+
+	.mat-mdc-row .mat-mdc-cell {
+		// border-bottom: 1px solid transparent;
+		// border-top: 1px solid transparent;
+		cursor: pointer;
+	}
+
+	.mat-mdc-row:hover .mat-mdc-cell {
+		border-bottom: 1px solid var(--content-primary);
+		border-color: currentColor
+	}
+
+	.mat-mdc-header-cell  {
+		color: var(--content-primary);
+		font-weight: 500;
+	}
+}

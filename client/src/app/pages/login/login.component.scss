@@ -1,0 +1,23 @@
+@import 'mixins/common.mixin';
+
+:host {
+	app-login-container {
+		display: contents;
+	}
+	@include flex-centered;
+	flex: auto;
+
+	form {
+		@include flex-column;
+		@include size(15rem, 30rem);
+		justify-content: space-evenly;
+	}
+
+	mat-card {
+		padding: var(--padding-l);
+	}
+
+	.title {
+		font-weight: 500;
+	}
+}
