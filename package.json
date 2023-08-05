@@ -4,11 +4,12 @@
   "description": "crm for business",
   "main": "index.js",
   "scripts": {
-    "start": "node ./crm/api/index.js",
-    "server": "nodemon ./crm/api/index.js",
+    "start": "node index.js",
+    "server": "nodemon index.js",
     "gui-install": "npm install --prefix client",
     "gui": "npm run start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run client-install && npm run build --prefix client"
   },
   "repository": {
     "type": "git",
