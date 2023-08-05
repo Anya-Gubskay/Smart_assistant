@@ -6,8 +6,8 @@ const analyticsRoutes = require("./routes/analytics");
 const categoryRoutes = require("./routes/category");
 const orderRoutes = require("./routes/order");
 const positionRoutes = require("./routes/position");
+const keys = require("./config/keys");
 const app = express();
-const functions = require("firebase-functions"); 
 
 mongoose
   .connect(keys.mongoURL, { dbName: keys.dbName }, {useNewUrlParser: true})
@@ -34,13 +34,12 @@ app.use("/api/category", categoryRoutes);
 app.use("/api/order", orderRoutes);
 app.use("/api/position", positionRoutes);
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/dist'))
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(express.static('client/dist'))
 
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'))
-  })
-}
+//   app.get('*', (req, res) => {
+//     res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'))
+//   })
+// }
 
-const api = functions.https.onRequest(app)
-module.exports = api;
+module.exports = app;
