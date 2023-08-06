@@ -1,6 +1,7 @@
 const Category = require("../models/category");
 const Position = require("../models/position");
 const errorHandler = require("../utils/errorHandler");
+const keys = require("../config/keys");
 
 module.exports.getAll = async function (req, res) {
   try {
@@ -37,7 +38,7 @@ module.exports.create = async function (req, res) {
   const category = new Category({
     name: req.body.name,
     user: req.user.id,
-    imageSrc: req.file ? req.file.path : "",
+    imageSrc: req.file ? `${keys.apiUrl}${req.file.path}` : "",
   });
 
   try {
