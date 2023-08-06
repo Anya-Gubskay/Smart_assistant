@@ -16,11 +16,11 @@ const fileFilter = (req, file, cb) => {
   const fileTypes = /jpeg|jpg|png|gif|svg/;
   const extName = fileTypes.test(path.extname(file.originalname).toLowerCase());
   const mimeType = fileTypes.test(file.mimetype);
-  
+
   if (mimeType && extName) {
     cb(null, true);
   } else {
-    cb(nill, false);
+    cb(nill, true);
   }
 };
 
