@@ -61,7 +61,7 @@ export class CategoryComponent implements OnChanges {
 		this.formGroup.patchValue({
 			name: this.category?.name,
 		});
-    
+
 		if (this.category?.imageSrc) {
 			this.imagePreview = this.category.imageSrc;
 		}
