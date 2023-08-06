@@ -20,12 +20,12 @@ const fileFilter = (req, file, cb) => {
   if (mimeType && extName) {
     cb(null, true);
   } else {
-    cb(nill, true);
+    cb(nill, false);
   }
 };
 
 const limits = {
-  fileSize: 1024 * 1024 * 5,
+  fileSize: 5024 * 1024 * 5,
 };
 
 module.exports = multer({ storage, fileFilter, limits });
