@@ -36,11 +36,9 @@ module.exports.remove = async function (req, res) {
 module.exports.create = async function (req, res) {
   const category = new Category({
     name: req.body.name,
-    user: req.user.id,
-    imageSrc: req.file ? req.file.path : "",
+    user: req.user.id
   });
-  req.setHeader("Content-Type", "multipart/form-data");
-  req.setHeader("Accept", "multipart/form-data");
+
   try {
     await category.save();
     res.status(201).json({
