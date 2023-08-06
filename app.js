@@ -28,6 +28,12 @@ app.use(express.json());
 //to configure HTTP headers applicable with CORS (Cross-Origin Resource Sharing).
 app.use(require("cors")());
 
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", key.API_URL);
+  res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  next();
+})
 app.use("/api/auth", authRoutes);
 app.use("/api/analytics", analyticsRoutes);
 app.use("/api/category", categoryRoutes);
