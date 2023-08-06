@@ -20,7 +20,7 @@ router.delete(
   passport.authenticate("jwt", { session: false }),
   controller.remove
 );
-router.post(
+router.options(
   "/",
   passport.authenticate("jwt", { session: false }),
   upload.single("image"),
