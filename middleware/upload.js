@@ -16,7 +16,7 @@ const fileFilter = (req, file, cb) => {
   const fileTypes = /jpeg|jpg|png|gif|svg/;
   const extName = fileTypes.test(path.extname(file.originalname).toLowerCase());
   const mimeType = fileTypes.test(file.mimetype);
-
+  
   if (mimeType && extName) {
     cb(null, true);
   } else {
@@ -25,7 +25,7 @@ const fileFilter = (req, file, cb) => {
 };
 
 const limits = {
-  fileSize: 5024 * 1024 * 5,
+  fileSize: 1024 * 1024 * 5,
 };
 
 module.exports = multer({ storage, fileFilter, limits });
