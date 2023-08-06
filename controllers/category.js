@@ -39,7 +39,7 @@ module.exports.create = async function (req, res) {
     user: req.user.id,
     imageSrc: req.file ? req.file.path : "",
   });
-  res.setHeader('Access-Control-Allow-Origin', '*');
+
   try {
     await category.save();
     res.status(201).json({
