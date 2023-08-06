@@ -23,13 +23,13 @@ router.delete(
 router.post(
   "/",
   passport.authenticate("jwt", { session: false }),
-  // upload.single("image"),
+  upload.single("image"),
   controller.create
 );
 router.patch(
   "/:id",
   passport.authenticate("jwt", { session: false }),
-  // upload.single("image"),
+  upload.single("image"),
   controller.update
 );
 

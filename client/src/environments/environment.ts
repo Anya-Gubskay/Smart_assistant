@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://glorious-bass-tam.cyclic.app'
+  apiUrl: 'https://smart-assistant.onrender.com'
 };
