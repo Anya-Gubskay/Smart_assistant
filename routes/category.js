@@ -1,8 +1,10 @@
 const express = require("express");
+const cors = require('cors');
 const controller = require("../controllers/category");
 const upload = require("../middleware/upload");
 const passport = require("passport");
 const router = express.Router();
+const keys = require("./config/keys");
 
 router.get(
   "/",
@@ -23,6 +25,7 @@ router.post(
   "/",
   passport.authenticate("jwt", { session: false }),
   upload.single("image"),
+  cors(keys.apiUrl),
   controller.create
 );
 router.patch(

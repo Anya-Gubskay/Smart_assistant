@@ -1,6 +1,5 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const cors = require("cors");
 const passport = require("passport");
 const authRoutes = require("./routes/auth");
 const analyticsRoutes = require("./routes/analytics");
@@ -19,8 +18,6 @@ mongoose
 app.use(passport.initialize());
 require("./middleware/passport")(passport);
 
-app.use(cors)
-
 //to see what is happening with the server at the moment
 app.use(require("morgan")("dev"));
 //send images from a folder by url
@@ -36,13 +33,5 @@ app.use("/api/analytics", analyticsRoutes);
 app.use("/api/category", categoryRoutes);
 app.use("/api/order", orderRoutes);
 app.use("/api/position", positionRoutes);
-
-// if (process.env.NODE_ENV === 'production') {
-//   app.use(express.static('client/dist'))
-
-//   app.get('*', (req, res) => {
-//     res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'))
-//   })
-// }
 
 module.exports = app;
