@@ -2,6 +2,7 @@ import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/com
 import {AuthService} from '../services/auth.service';
 import {Injectable, inject} from '@angular/core';
 import {Observable} from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
@@ -10,6 +11,7 @@ export class TokenInterceptor implements HttpInterceptor {
 		const loadingService = inject(AuthService);
 		if (loadingService.isAuthenticated()) {
 			req = req.clone({
+        url: `${environment.apiUrl}${req.url}`,
 				setHeaders: {
 					Authorization: loadingService.getToken(),
 				},

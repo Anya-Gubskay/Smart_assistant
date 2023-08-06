@@ -5,9 +5,6 @@ import {Observable, catchError, delay, mergeMap, of, retry, retryWhen, switchMap
 import { ToastService } from '../components/toast/toast-service';
 import { Toast } from '../components/toast/toast.entities';
 
-export const maxRetries = 2;
-export const delayMs = 2000;
-
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
 	intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -16,7 +13,6 @@ export class ErrorInterceptor implements HttpInterceptor {
 			retry({count: 2, delay: 2000}),
 			catchError((e) => {
 				if (e.status === 500) {
-          console.log(e.message);
 					serviseToaster.initiate(
             {content: e.message, type: Toast.ToastTypes.Error}
             )

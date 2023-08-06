@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const passport = require("passport");
 const authRoutes = require("./routes/auth");
 const analyticsRoutes = require("./routes/analytics");
@@ -17,6 +18,8 @@ mongoose
 // add passport strategy
 app.use(passport.initialize());
 require("./middleware/passport")(passport);
+
+app.use(cors)
 
 //to see what is happening with the server at the moment
 app.use(require("morgan")("dev"));
