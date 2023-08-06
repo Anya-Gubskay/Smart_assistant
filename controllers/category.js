@@ -40,6 +40,7 @@ module.exports.create = async function (req, res) {
     imageSrc: req.file ? req.file.path : "",
   });
   req.setHeader("Content-Type", "multipart/form-data");
+  req.setHeader("Accept", "multipart/form-data");
   try {
     await category.save();
     res.status(201).json({
