@@ -1,7 +1,15 @@
 :host {
+	.wrapper {
+		height: calc(100% - var(--padding));
+		overflow: auto;
+	}
+
 	.analytics-block {
 		display: grid;
 		grid-gap: var(--padding);
+		grid-template-rows: 1fr 1fr;
+		height: calc(100% - 2*var(--padding-l) - var(--padding-s));
 		padding-bottom: var(--padding-l);
+
 	}
 }

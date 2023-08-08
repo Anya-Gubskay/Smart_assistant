@@ -53,10 +53,10 @@ export function assortimentReducer(state: AssortimentState = initialState, actio
 			return set('positions', clonePositions, state);
 
 		case AssortimentActions.TYPES.UPDATE_POSITION_FOR_CATEGORY.SUCCEEDED:
-			const cloneData = cloneDeep(state.positions);
-			let index = cloneData.findIndex((item) => item._id === action.payload.data._id);
-			cloneData[index] = action.payload;
-			return set('positions', cloneData, state);
+			const cloneCategories = cloneDeep(state.positions);
+			let index = cloneCategories.findIndex((item) => item._id === action.payload.data._id);
+			cloneCategories[index] = action.payload.data;
+			return set('positions', cloneCategories, state);
 
 		case AssortimentActions.TYPES.DELETE_POSITION_FOR_CATEGORY.SUCCEEDED:
 			const positions = cloneDeep(state.positions);

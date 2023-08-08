@@ -11,6 +11,8 @@ export const status: Statuses = {
 };
 
 export const COLOR: Record<string, string> = {
-  revenue: '#2780b0',
-  orders: '#e4ce25'
+  revenue: '#B7A6F6',
+  orders: '#88A3E2'
 }
+
+export const DEFAULT_FORMAT_DATE = 'MM.DD.YYYY'

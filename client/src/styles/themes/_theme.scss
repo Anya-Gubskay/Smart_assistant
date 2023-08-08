@@ -16,7 +16,9 @@
 	--app-font: Quicksand, sans-serif;
 	--action-icon-size: 1.25rem;
 	--border-radius: 0.3rem;
-	--app-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+	--app-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
+	--app-shadow-hover: 0 0 10px 5px #88A3E2;
+	--app-transition: linear .5s;
 
 	@include var-hsla-colors($base-color);
 	@include var-hsla-colors($light-theme-colors);

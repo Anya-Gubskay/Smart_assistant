@@ -7,7 +7,6 @@ import {TodoListComponent} from 'src/app/shared/components/todo-list/todo-list.c
 import {Routing} from 'src/app/shared/entities/routing.entity';
 import {Item, LoadingStatus} from 'src/app/shared/interfaces/common.interface';
 import {SharedModule} from 'src/app/shared/shared.module';
-import {AssortimentStoreFeatureModule} from 'src/app/store/assortiment';
 import {Categories} from 'src/app/shared/entities/categories.entity';
 
 @Component({
@@ -18,7 +17,6 @@ import {Categories} from 'src/app/shared/entities/categories.entity';
 		SharedModule,
 		TodoListComponent,
 		ModalComponent,
-		AssortimentStoreFeatureModule,
 	],
 	templateUrl: './assortiment.component.html',
 	styleUrls: ['./assortiment.component.scss'],

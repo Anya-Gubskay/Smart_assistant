@@ -25,7 +25,7 @@ import {SharedModule} from 'src/app/shared/shared.module';
 export class OverviewComponent {
 	@Input() data!: OverviewPage.Overview | null;
 	@Input() loadingStatus!: LoadingStatus | null;
-  
+
   public date!: string;
 	public readonly CONFIG_REVENUE = OverviewPage.ConfigRevenue;
 	public readonly CONFIG_ORDERS = OverviewPage.ConfigOrders;
@@ -33,7 +33,7 @@ export class OverviewComponent {
 		position: TooltipPosition.RIGHT,
 		theme: TooltipTheme.DARK,
 		showDelay: 100,
-		title: `The "Overview" page will show the dynamics of sales for the previous day.`,
+		title: `The "Overview" page will show the dynamics of sales for the current day.`,
 	};
 
 	ngOnInit(): void {

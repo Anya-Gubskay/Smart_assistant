@@ -19,4 +19,8 @@ export class OrderAddFormComponent {
   @Output() addOrder = new EventEmitter<Order.OrderByCategory>();
 
   constructor(public order: OrderService){}
+
+  public trackByFn(index: number, item: Order.OrderListItem): string | number {
+		return item._id ?? index;
+	}
 }

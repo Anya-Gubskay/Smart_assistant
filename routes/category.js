@@ -1,5 +1,4 @@
 const express = require("express");
-const cors = require('cors');
 const controller = require("../controllers/category");
 const upload = require("../middleware/upload");
 const passport = require("passport");

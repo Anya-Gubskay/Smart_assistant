@@ -23,7 +23,8 @@ export namespace Table {
 		 */
 		sortValueOf?: (value: string) => number;
 
-    onClick?: (column: Table.ColumnConfig, row: Table.Row) => void;
+    onClickButton?: (column: Table.ColumnConfig, row: Table.Row) => void;
+    onClickRow?: (column: Table.ColumnConfig, row: Table.Row) => void;
 	}
 
 	export enum ColumnsTypes {

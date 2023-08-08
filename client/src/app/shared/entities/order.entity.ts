@@ -50,17 +50,11 @@ export namespace Order {
 
   type callbackFnc = (column: Table.ColumnConfig, row: Table.Row) => void;
 
-  export const  configTable = (callback: callbackFnc) => [
+  export const  configTable =  [
 		{property: 'order', title: '№', sortable: true},
 		{property: '_date', title: 'Date', sortable: true},
 		{property: '_time', title: 'Time', sortable: true},
-		{property: 'total', title: 'Price', sortable: true},
-		{
-			property: 'action',
-			title: '',
-			icon: 'filter',
-			onClick: callback,
-			type: Table.ColumnsTypes.ButtonIcon,
-		},
+		{property: 'total', title: 'Price', sortable: true}
 	];
 }
+  

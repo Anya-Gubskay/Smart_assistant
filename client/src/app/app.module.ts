@@ -14,6 +14,7 @@ import { NavigationActionTiming, StoreRouterConnectingModule } from '@ngrx/route
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
 import { ToastComponent } from './shared/components/toast/toast.component';
+import { ApiUrlInterceptor } from './shared/interceptors/api-url.interceptor';
 
 @NgModule({
 	declarations: [AppComponent],
@@ -41,6 +42,11 @@ import { ToastComponent } from './shared/components/toast/toast.component';
 			useClass: ErrorInterceptor,
 			multi: true,
 		},
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiUrlInterceptor,
+      multi: true,
+    }
 	],
 	bootstrap: [AppComponent],
 })

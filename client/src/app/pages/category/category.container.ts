@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
-import { AssortimentStoreFeatureModule } from "src/app/store/assortiment";
 import { Store } from "@ngrx/store";
 import { CommonModule } from "@angular/common";
 import { AppState } from "src/app/store/rootReducer";
@@ -13,7 +12,7 @@ import { Positions } from "src/app/shared/entities/positions.entity";
 @Component({
   selector: 'app-assortiment-container',
   standalone: true,
-  imports: [CommonModule, CategoryComponent, AssortimentStoreFeatureModule],
+  imports: [CommonModule, CategoryComponent],
   template: `<app-category
   [isNewPage]="isNewCategoryPage$ | async"
   [category]="category$ | async"

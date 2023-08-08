@@ -4,14 +4,13 @@ import {CommonModule} from '@angular/common';
 import {AppState} from 'src/app/store/rootReducer';
 import {AuthorizationActions} from 'src/app/store/authorization/actions';
 import {Login} from 'src/app/shared/entities/login.entity';
-import {AuthorizationStoreFeatureModule} from 'src/app/store/authorization';
 import {LoginComponent} from './login.component';
 import {AuthorizationSelectors} from 'src/app/store/authorization/selectors';
 
 @Component({
 	selector: 'app-login-container',
 	standalone: true,
-	imports: [CommonModule, LoginComponent, AuthorizationStoreFeatureModule],
+	imports: [CommonModule, LoginComponent],
 	template: `<app-login
 		[loadingStatus]="$loadingStatus | async"
 		(authorization)="onAuthorisation($event)"

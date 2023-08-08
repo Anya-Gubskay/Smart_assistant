@@ -13,7 +13,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatDividerModule} from '@angular/material/divider';
-import {MatOptionModule, MatRippleModule} from '@angular/material/core';
+import {MatNativeDateModule, MatOptionModule, MatRippleModule} from '@angular/material/core';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatExpansionModule} from '@angular/material/expansion';
@@ -27,8 +27,6 @@ import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { LoaderComponent } from './components/loader/loader/loader.component';
-
 @NgModule({
   exports: [
     CommonModule,
@@ -62,6 +60,8 @@ import { LoaderComponent } from './components/loader/loader/loader.component';
     MatPaginatorModule,
     MatSortModule,
     MatProgressBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
 })
 export class SharedModule {}

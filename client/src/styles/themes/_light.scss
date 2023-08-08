@@ -6,7 +6,6 @@ $light-accent: mat.define-palette(mat.$teal-palette);
 $light-warn: mat.define-palette(mat.$red-palette);
 $light-theme: mat.define-light-theme($light-primary, $light-accent, $light-warn);
 
-
 $light-theme-colors: (
 	bg: #f8f7fa,
 	btn-hover: rgba(200, 200, 200, 0.2),
@@ -15,8 +14,9 @@ $light-theme-colors: (
 	third: #e0e0e0,
 	content-primary: #9c27b0,
 	content-active: #5b2eac,
-	content-secondary: #2780b0,
-	content-third: #FCC230,
+	content-secondary: #88A3E2,
+	content-third: #B7A6F6,
+	content-hover: #AAECFC,
 	medium-shadow: rgba(66, 66, 74, 0.5),
 	medium-light-shadow: rgba(66, 66, 74, 0.3),
 	light-shadow: rgba(90, 112, 140, 0.5),

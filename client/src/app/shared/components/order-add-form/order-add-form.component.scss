@@ -4,14 +4,25 @@
 	width: 100%;
 
 	.table {
-		// border: 1px solid #dddddd;
 		border-collapse: collapse;
-		margin-bottom: 20px;
+		height: calc(100% - 9rem);
+		margin-bottom: var(--margin);
+		width: 100%;
+
+		tbody {
+			display: block;
+			height: calc(100% - 4rem);
+			overflow: auto;
+		}
+	}
+
+	.table thead, .table tbody tr {
+		display: table;
+		table-layout: fixed;
 		width: 100%;
 	}
 
 	.table th {
-		// background: #efefef;
 		border-bottom: 1px solid #ddd;
 		font-weight: bold;
 		padding: var(--padding);
@@ -26,6 +37,10 @@
 
 	.actions {
 		@include flex-space-between;
+	}
+
+	.content-quantity {
+		margin: 0;
 	}
 
 	::ng-deep {

@@ -5,4 +5,9 @@
 		@include flex-space-between;
 		margin-bottom: var(--margin);
 	}
+
+	.wrapper-list {
+		display: block;
+		height: calc(100% - 2rem);
+	}
 }

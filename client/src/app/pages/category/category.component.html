@@ -18,7 +18,7 @@
 			</mat-form-field>
 			<div>
 				<input type="file" (change)="onFileSelect($event)" class="file-btn" #inputFile />
-				<button mat-raised-button color="primary" class="btn" (click)="inputFile.click()">
+				<button mat-raised-button class="btn btn-upload" (click)="inputFile.click()">
 					<mat-icon class="close-icon pointer">cloud_upload</mat-icon>
 					<span class="title-btn">Upload image</span>
 				</button>
@@ -39,10 +39,11 @@
 	</div>
 	<div class="page-title" *ngIf="category">
 		<h1>Positions</h1>
-		<button mat-raised-button color="primary" (click)="openModal()">Add Position</button>
+		<button mat-raised-button class="btn-add" color="primary" (click)="openModal()">Add Position</button>
 	</div>
 
 	<app-todo-list
+  class="wrapper-list"
 		*ngIf="category"
 		[items]="positions"
 		[loadingStatus]="positionsLoadingStatus"

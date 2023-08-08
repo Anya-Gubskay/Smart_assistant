@@ -1,12 +1,23 @@
-<div class="page-title" *ngIf="loadingStatus?.loaded; else loader">
+<div class="page-title">
 	<h1>Orders</h1>
 </div>
-<div class="container-cards">
-	<div class="card pointer" *ngFor="let item of categories" [routerLink]="['/order', item._id]">
-		<img [src]="item.imageSrc" />
-		<h2 class="card-title">{{ item.name }}</h2>
+<ng-container *ngIf="loadingStatus?.loaded; else loader">
+	<app-search [(value)]="searchQuery"></app-search>
+	<div class="container-cards">
+		<div
+			class="card pointer"
+			*ngFor="let item of categories | filterItemsByString: searchQuery"
+			[routerLink]="['/order', item._id]"
+		> <div class="go-corner">
+      <div class="go-arrow">
+        →
+      </div>
+    </div>
+			<img [src]="item.imageSrc" />
+			<h2 class="card-title">{{ item.name }}</h2>
+		</div>
 	</div>
-</div>
+</ng-container>
 <router-outlet></router-outlet>
 
 <ng-template #loader>

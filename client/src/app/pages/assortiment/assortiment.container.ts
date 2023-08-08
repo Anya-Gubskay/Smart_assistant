@@ -1,6 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AssortimentComponent} from './assortiment.component';
-import {AssortimentStoreFeatureModule} from 'src/app/store/assortiment';
 import {Store} from '@ngrx/store';
 import {AssortimentSelectors} from 'src/app/store/assortiment/selectors';
 import {CommonModule} from '@angular/common';
@@ -11,7 +10,7 @@ import {Categories} from 'src/app/shared/entities/categories.entity';
 @Component({
 	selector: 'app-assortiment-container',
 	standalone: true,
-	imports: [CommonModule, AssortimentComponent, AssortimentStoreFeatureModule],
+	imports: [CommonModule, AssortimentComponent],
 	template: `<app-assortiment
 		[categories]="categories$ | async"
 		[loadingStatus]="loadingStatus$ | async"

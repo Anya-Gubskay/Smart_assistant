@@ -1,0 +1,19 @@
+.mat-datepicker-content {
+	background-color: var(--content-secondary) !important;
+	color: var(--white) !important;
+}
+
+app-picker-date-range {
+	.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+		background-color: var(--white) !important;
+	}
+
+	.mat-mdc-form-field-flex, .mat-mdc-form-field-focus-overlay {
+		background-color: var(--white) !important;
+	}
+
+	.mat-mdc-date-range-input-inner {
+		color: var(--black) !important;
+	}
+
+}

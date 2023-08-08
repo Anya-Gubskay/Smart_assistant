@@ -5,7 +5,6 @@ import {AppState} from 'src/app/store/rootReducer';
 import {AssortimentActions} from 'src/app/store/assortiment/actions';
 import {OrderAddComponent} from './order-add.component';
 import {AssortimentSelectors} from 'src/app/store/assortiment/selectors';
-import {Positions} from 'src/app/shared/entities/positions.entity';
 import {OrderActions} from 'src/app/store/order/actions';
 import {Order} from 'src/app/shared/entities/order.entity';
 

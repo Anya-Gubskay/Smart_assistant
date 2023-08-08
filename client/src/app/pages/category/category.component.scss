@@ -1,6 +1,8 @@
 @import 'mixins/common.mixin';
 
 :host {
+	--height-category-content: 17rem;
+
 	.form-product {
 		@include flex-column;
 		padding: 1rem 0;
@@ -9,6 +11,16 @@
 
 	.btn {
 		margin-top: 1rem;
+
+		&-upload {
+			background: var(--content-secondary);
+			color: var(--white);
+		}
+
+		&-add {
+			position: relative;
+			top: 2.8rem;
+		}
 	}
 
 	.title-btn {
@@ -21,6 +33,7 @@
 
 	.content {
 		display: flex;
+		height: var(--height-category-content);
 
 		.container-image {
 			box-sizing: border-box;
@@ -28,13 +41,17 @@
 
 			img{
 				@include box(15rem);
+				border: solid 1px var(--third);
 			}
 		}
 	};
 
+	.wrapper-list {
+		display: block;
+		height: calc(100% - 4rem - var(--height-category-content));
+	}
+
 	.file-btn {
 		display: none;
 	}
-
-
 }

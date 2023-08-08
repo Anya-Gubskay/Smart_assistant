@@ -1,18 +1,26 @@
+@import 'mixins/common.mixin';
+
 :host {
 	--height-search: 2rem;
-	--height-pagination: 3.5rem;
+	--height-picker: '0rem';
+	--height-pagination: '0rem';
+
+	.container-filters {
+		@include flex-centered();
+		justify-content: start;
+	}
+
+	.search {
+		margin-right: var(--margin);
+		width: 20rem;
+	}
 
 	.example-container {
 		display: flex;
 		flex-direction: column;
-		height: calc(100% - var(--height-search) - var(--height-pagination) - 2*var(--padding-l));
+		height: calc(100% - var(--height-search) - var(--height-picker) - var(--height-pagination) - 2*var(--padding-l));
 		min-width: 300px;
 		overflow: auto;
-
-
-		&.width-filter {
-			// height: calc(100% - 3rem);
-		}
 
 		&.width-title {
 			height: calc(100% - 1.5rem);
@@ -34,23 +42,22 @@
 	}
 
 	.mat-mdc-table {
-
-		max-height: 500px;
+		height: 100%;
 	}
 
 	.mat-mdc-row .mat-mdc-cell {
-		// border-bottom: 1px solid transparent;
-		// border-top: 1px solid transparent;
 		cursor: pointer;
 	}
 
 	.mat-mdc-row:hover .mat-mdc-cell {
+		background-color: var(--content-secondary);
 		border-bottom: 1px solid var(--content-primary);
-		border-color: currentColor
+		border-color: currentColor;
+		color: var(--white);
 	}
 
 	.mat-mdc-header-cell  {
-		color: var(--content-primary);
+		color: var(--content-secondary);
 		font-weight: 500;
 	}
 }

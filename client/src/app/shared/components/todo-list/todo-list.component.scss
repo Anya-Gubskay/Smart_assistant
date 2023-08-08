@@ -2,7 +2,7 @@
 
 :host {
 	.container-list {
-		max-height: calc(100% - 2*var(--padding-l));
+		max-height: calc(100% - 2*var(--padding-l) - 1rem);
 		overflow: auto;
 	}
 
@@ -15,7 +15,15 @@
 	}
 
 	.title, .icon {
-		color: var(--content-primary)
+		color: var(--content-active);
+	}
+
+	.icon {
+		transition: var(--app-transition);
+
+		&:hover {
+			color: var(--black);
+		}
 	}
 
 	.list-item {
@@ -27,7 +35,7 @@
 		padding: var(--padding);
 
 		&:hover {
-			background-color: var(--btn-hover);
+			background-color: var(--white);
 		}
 	}
 }
