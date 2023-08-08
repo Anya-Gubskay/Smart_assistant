@@ -1,6 +1,8 @@
 <div>
   <mat-toolbar color="primary">
-    <div class="pointer" [routerLink]="Paths[Key.Main].path">Smart Assistant</div>
+    <div class="pointer" [routerLink]="Paths[Key.Main].path">
+      <img src="../../../../assets/img/logo.png">
+    </div>
     <span class="example-spacer"></span>
     <button mat-button routerLinkActive="active" [routerLink]="PathsChildren?.[Key.Login]?.path">Sign in</button>
     <button mat-button routerLinkActive="active" [routerLink]="PathsChildren?.[Key.Registration]?.path">Registration</button>

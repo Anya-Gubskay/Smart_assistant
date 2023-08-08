@@ -44,10 +44,11 @@
 			padding: var(--padding) 0;
 
 			.simple-text {
+				@include flex-centered();
 				color: var(--black);
 				font-size: 1.3rem;
 				font-weight: 400;
-				margin-left: var(--margin);
+				height: 2rem;
 				padding: var(--padding-s) 0;
 				text-transform: uppercase;
 			}

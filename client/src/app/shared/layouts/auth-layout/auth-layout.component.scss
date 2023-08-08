@@ -8,5 +8,15 @@
 	.example-spacer {
 		flex: 1 1 auto;
 	}
+
+	.pointer {
+    @include flex-centered;
+		background: var(--white);
+		border-radius: var(--border-radius);
+
+		img {
+			width: 10rem;
+		}
+	}
 }
 
