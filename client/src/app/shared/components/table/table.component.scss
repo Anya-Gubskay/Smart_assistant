@@ -7,7 +7,7 @@
 
 	.container-filters {
 		@include flex-centered();
-		justify-content: start;
+		justify-content: space-between;
 	}
 
 	.search {
@@ -18,7 +18,7 @@
 	.example-container {
 		display: flex;
 		flex-direction: column;
-		height: calc(100% - var(--height-search) - var(--height-picker) - var(--height-pagination) - 2*var(--padding-l));
+		max-height: calc(100% - var(--height-search) - var(--height-picker) - var(--height-pagination) - 2*var(--padding-l));
 		min-width: 300px;
 		overflow: auto;
 

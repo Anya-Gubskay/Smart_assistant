@@ -1,8 +1,14 @@
 <ng-container *ngIf="loadingStatus?.loaded; else loader">
-	<div class="container-filters">
-		<app-search class="search" *ngIf="isFilter" (valueChange)="applyFilter($event)"></app-search>
+	<div class="container-filters" 		
+  [class.disabled]="!dataSource.data.length">
+		<app-search
+			class="search"
+			*ngIf="isFilter"
+			(valueChange)="applyFilter($event)"
+		></app-search>
 		<app-picker-date-range
 			*ngIf="isDatePicker"
+      [disable]="!dataSource.data.length"
 			(dateChange)="changedDate($event)"
 		></app-picker-date-range>
 	</div>
@@ -10,13 +16,12 @@
 		class="example-container mat-elevation-z8"
 		[ngClass]="{'width-filter': isFilter, 'width-title': title}"
 		[style.--height-pagination]="isPagination ? '3.5rem' : '0rem'"
-    [style.--height-picker]="isDatePicker ? '2rem' : '0rem'"
+		[style.--height-picker]="isDatePicker ? '2rem' : '0rem'"
 	>
-		<mat-table [dataSource]="dataSource" matSort  class="full-width-table">
+		<mat-table [dataSource]="dataSource" matSort class="full-width-table">
 			<ng-container *ngIf="columnsConfig.length">
 				<ng-container [matColumnDef]="column.property" *ngFor="let column of columnsConfig">
 					<mat-header-cell
-          fxFlex="60px"
 						*matHeaderCellDef
 						mat-sort-header
 						[disabled]="!column.sortable"
@@ -44,10 +49,17 @@
 						</ng-container>
 
 						<ng-container *ngSwitchDefault>
-							<mat-cell fxFlex="60px" *matCellDef="let row"> {{ row[column.property] }} </mat-cell>
+							<mat-cell fxFlex="60px" *matCellDef="let row">
+								{{ row[column.property] }}
+							</mat-cell>
 						</ng-container>
 					</ng-container>
 				</ng-container>
+			</ng-container>
+			<ng-container matColumnDef="noData">
+				<mat-footer-cell *matFooterCellDef
+					><app-no-data [size]="'xs'"></app-no-data
+				></mat-footer-cell>
 			</ng-container>
 			<mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
 			<mat-row
@@ -55,6 +67,9 @@
 				(click)="clickRow($event, row)"
 			>
 			</mat-row>
+			<ng-container *ngIf="!dataSource.data.length">
+				<mat-footer-row *matFooterRowDef="['noData']"></mat-footer-row>
+			</ng-container>
 		</mat-table>
 	</div>
 	<mat-paginator

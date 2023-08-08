@@ -37,6 +37,6 @@ export class OverviewComponent {
 	};
 
 	ngOnInit(): void {
-		this.date = moment().add(-1, 'd').format('DD.MM.YYYY');
+		this.date = moment().format('DD.MM.YYYY');
 	}
 }

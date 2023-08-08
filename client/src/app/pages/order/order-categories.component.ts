@@ -7,6 +7,7 @@ import {Categories} from 'src/app/shared/entities/categories.entity';
 import {LoaderComponent} from 'src/app/shared/components/loader/loader/loader.component';
 import {SearchComponent} from 'src/app/shared/components/search/search.component';
 import { FilterItemsByParamsPipe } from 'src/app/shared/pipes/filter-items-by-string.pipe';
+import { AppNoDataComponent } from 'src/app/shared/components/no-data/no-data.component';
 
 @Component({
 	selector: 'app-order-categories',
@@ -17,7 +18,8 @@ import { FilterItemsByParamsPipe } from 'src/app/shared/pipes/filter-items-by-st
     RouterModule,
     LoaderComponent,
     SearchComponent,
-    FilterItemsByParamsPipe
+    FilterItemsByParamsPipe,
+    AppNoDataComponent,
     ],
 	templateUrl: './order-categories.component.html',
 	styleUrls: ['./order-categories.component.scss'],

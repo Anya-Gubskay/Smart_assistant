@@ -21,6 +21,7 @@ import {PickerDateRangeComponent} from '../picker-date-range/picker-date-range.c
 import {PickerDateRange} from '../picker-date-range/picker-date-range.entity';
 import * as moment from 'moment';
 import {DEFAULT_FORMAT_DATE} from '../../constants/common.constats';
+import { AppNoDataComponent } from '../no-data/no-data.component';
 
 @Component({
 	selector: 'app-table',
@@ -31,6 +32,7 @@ import {DEFAULT_FORMAT_DATE} from '../../constants/common.constats';
 		SearchComponent,
 		LoaderComponent,
 		PickerDateRangeComponent,
+    AppNoDataComponent,
 	],
 	templateUrl: './table.component.html',
 	styleUrls: ['./table.component.scss'],

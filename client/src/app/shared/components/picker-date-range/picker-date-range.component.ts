@@ -17,6 +17,7 @@ import { filter } from 'rxjs';
 })
 export class PickerDateRangeComponent implements OnInit, OnChanges {
   @Input() range: PickerDateRange.DateRange = new PickerDateRange.DateRange();
+  @Input() disable!: boolean;
   @Output() dateChange = new EventEmitter<PickerDateRange.DateRange>();
 
   public formGroup!: UntypedFormGroup;
@@ -25,7 +26,7 @@ export class PickerDateRangeComponent implements OnInit, OnChanges {
   constructor(private fb: UntypedFormBuilder){}
 
   ngOnChanges(changes: SimpleChanges): void {
-    if(changes.range.currentValue) {
+    if(changes?.range?.currentValue) {
       this.createFormGroup(this.range);
     }
   }

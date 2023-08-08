@@ -1,7 +1,6 @@
-.mat-datepicker-content {
-	background-color: var(--content-secondary) !important;
-	color: var(--white) !important;
-}
+// .mat-datepicker-content {
+// 	background-color: var(--content-third) !important;
+// }
 
 app-picker-date-range {
 	.mdc-text-field--filled:not(.mdc-text-field--disabled) {
@@ -15,5 +14,4 @@ app-picker-date-range {
 	.mat-mdc-date-range-input-inner {
 		color: var(--black) !important;
 	}
-
 }

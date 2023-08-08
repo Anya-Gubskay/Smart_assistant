@@ -76,4 +76,9 @@
 		margin-right: -0.8rem;
 		margin-top: -0.8rem;
 	}
+
+	.empty {
+		display: block;
+		height: calc(100% - 5rem);
+	}
 }

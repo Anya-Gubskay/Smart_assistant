@@ -5,11 +5,12 @@ import { LoaderComponent } from 'src/app/shared/components/loader/loader/loader.
 import { Order } from 'src/app/shared/entities/order.entity';
 import { LoadingStatus } from 'src/app/shared/interfaces/common.interface';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { AppNoDataComponent } from '../no-data/no-data.component';
 
 @Component({
   selector: 'app-order-add-form',
   standalone: true,
-  imports: [CommonModule,  SharedModule, LoaderComponent],
+  imports: [CommonModule,  SharedModule, LoaderComponent, AppNoDataComponent],
   templateUrl: './order-add-form.component.html',
   styleUrls: ['./order-add-form.component.scss']
 })

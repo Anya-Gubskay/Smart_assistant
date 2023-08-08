@@ -43,6 +43,11 @@
 		margin: 0;
 	}
 
+	.empty {
+		@include flex-centered;
+		height: calc(100% - 6rem);
+	}
+
 	::ng-deep {
 		.mat-mdc-form-field-subscript-wrapper {
 			display: none;

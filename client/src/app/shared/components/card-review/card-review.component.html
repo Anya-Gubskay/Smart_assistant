@@ -3,8 +3,8 @@
   <h1 class="card-income">{{data?.today}} {{config.unit}}</h1>
   <h1 class="card-percent" [ngClass]="{'success-info': data?.isHigher, 'error-info': !data?.isHigher}">
     <mat-icon>{{data?.isHigher ? 'arrow_upward': 'arrow_downward'}}</mat-icon>
-    <span>{{data?.percent}} %</span>
+    <span>{{data?.percent ?? 0}} %</span>
   </h1>
-  <div class="card-description">{{config.description}} {{data?.percent}} % {{data?.isHigher ? 'higher' : 'below'}}
-    average {{data?.compare}} {{config.unit}} per day.</div>
+  <div class="card-description">{{config.description}} {{data?.percent ?? 0}} % {{data?.isHigher ? 'higher' : 'below'}}
+    average {{data?.compare ?? 0}} {{config.unit}} per day.</div>
 </div>

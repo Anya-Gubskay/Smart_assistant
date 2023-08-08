@@ -2,23 +2,29 @@
 	<h1>Orders</h1>
 </div>
 <ng-container *ngIf="loadingStatus?.loaded; else loader">
-	<app-search [(value)]="searchQuery"></app-search>
-	<div class="container-cards">
-		<div
-			class="card pointer"
-			*ngFor="let item of categories | filterItemsByString: searchQuery"
-			[routerLink]="['/order', item._id]"
-		> <div class="go-corner">
-      <div class="go-arrow">
-        →
-      </div>
-    </div>
-			<img [src]="item.imageSrc" />
-			<h2 class="card-title">{{ item.name }}</h2>
+	<app-search [class.disabled]="!categories?.length" [(value)]="searchQuery"></app-search>
+	<ng-container *ngIf="categories?.length; else empty">
+		<div class="container-cards">
+			<div
+				class="card pointer"
+				*ngFor="let item of categories | filterItemsByString: searchQuery"
+				[routerLink]="['/order', item._id]"
+			>
+				<div class="go-corner">
+					<div class="go-arrow">→</div>
+				</div>
+				<img [src]="item.imageSrc" />
+				<h2 class="card-title">{{ item.name }}</h2>
+			</div>
 		</div>
-	</div>
+	</ng-container>
 </ng-container>
+
 <router-outlet></router-outlet>
+
+<ng-template #empty>
+	<app-no-data class="empty"></app-no-data>
+</ng-template>
 
 <ng-template #loader>
 	<app-loader></app-loader>

@@ -1,5 +1,5 @@
 <ng-container *ngIf="!loadingStatus?.loading; else loader">
-	<app-search [(value)]="searchQuery"></app-search>
+	<app-search [class.disabled]="!items?.length" [(value)]="searchQuery"></app-search>
 	<div
 		class="container-list"
 		[ngClass]="{'container-empty': !items?.length}"
@@ -20,9 +20,11 @@
 		</ng-container>
 	</div>
 </ng-container>
+
 <ng-template #empty>
-	<div class="container-empty">There are no data</div>
+  <app-no-data></app-no-data>
 </ng-template>
+
 <ng-template #loader>
 	<app-loader></app-loader>
 </ng-template>
