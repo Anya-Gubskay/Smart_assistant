@@ -42,7 +42,7 @@ module.exports.getOverview = async function(req, res) {
       orders: {
         percent: Math.abs(+ordersPercent),
         compare: Math.abs(+compareNumber),
-        yesterday: +todayOrdersNumber,
+        today: +todayOrdersNumber,
         isHigher: +ordersPercent > 0
       }
     })

@@ -1,6 +1,6 @@
 <div class="card" [style.background] = "config.color">
   <h2 class="card-title">{{config.title}}:</h2>
-  <h1 class="card-income">{{data?.yesterday}} {{config.unit}}</h1>
+  <h1 class="card-income">{{data?.today}} {{config.unit}}</h1>
   <h1 class="card-percent" [ngClass]="{'success-info': data?.isHigher, 'error-info': !data?.isHigher}">
     <mat-icon>{{data?.isHigher ? 'arrow_upward': 'arrow_downward'}}</mat-icon>
     <span>{{data?.percent}} %</span>

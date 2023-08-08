@@ -4,7 +4,7 @@ export namespace OverviewPage {
   export interface OverviewItem  {
     percent: number;
     compare: number;
-    todayday: number;
+    today: number;
     isHigher: boolean;
   }
 
