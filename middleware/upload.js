@@ -4,7 +4,7 @@ const path = require('path');
 
 const storage = multer.diskStorage({
   destination(req, file, cb) {
-    cb(null, "uploads/");
+    cb(null, path.resolve(__dirname, 'uploads'));
   },
 
   filename(rea, file, cb) {
@@ -14,6 +14,7 @@ const storage = multer.diskStorage({
 });
 
 const fileFilter = (req, file, cb) => {
+  console.log(path.resolve(__dirname, 'uploads'));
   const fileTypes = /jpeg|jpg|png|gif|svg/;
   const extName = fileTypes.test(path.extname(file.originalname).toLowerCase());
   const mimeType = fileTypes.test(file.mimetype);
