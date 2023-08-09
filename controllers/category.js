@@ -39,6 +39,7 @@ module.exports.create = async function (req, res) {
     name: req.body.name,
     user: req.user.id,
     imageSrc: req.file ? `${keys.apiUrl}/${req.file.path}` : "",
+    key: keys.apiUrl
   });
 
   try {

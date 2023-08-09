@@ -1,12 +1,12 @@
 {
   "/api/*": {
-    "target": "https://glorious-bass-tam.cyclic.app",
+    "target": "https://smart-assistant.onrender.com",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": true
   },
   "/uploads/*": {
-    "target": "https://glorious-bass-tam.cyclic.app",
+    "target": "https://smart-assistant.onrender.com",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": true
