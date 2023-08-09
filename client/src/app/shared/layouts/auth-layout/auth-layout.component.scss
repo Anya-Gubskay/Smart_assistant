@@ -10,7 +10,7 @@
 	}
 
 	.pointer {
-    @include flex-centered;
+		@include flex-centered;
 		background: var(--white);
 		border-radius: var(--border-radius);
 

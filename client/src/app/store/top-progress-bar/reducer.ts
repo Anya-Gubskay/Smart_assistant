@@ -20,6 +20,8 @@ export function topProgressBarReducers(
 		case AuthorizationActions.TYPES.LOGIN.REQUESTED:
 		case AssortimentActions.TYPES.ADD_CATEGORY.REQUESTED:
 		case AssortimentActions.TYPES.ADD_POSITION_FOR_CATEGORY.REQUESTED:
+		case AssortimentActions.TYPES.UPDATE_CATEGORY.REQUESTED:
+		case AssortimentActions.TYPES.UPDATE_POSITION_FOR_CATEGORY.REQUESTED:
 		case OrderActions.TYPES.ADD_ORDER.REQUESTED:
 			return set('isVisible', true, state);
 
@@ -33,6 +35,10 @@ export function topProgressBarReducers(
 		case AssortimentActions.TYPES.ADD_POSITION_FOR_CATEGORY.FAILED:
 		case OrderActions.TYPES.ADD_ORDER.SUCCEEDED:
 		case OrderActions.TYPES.ADD_ORDER.FAILED:
+		case AssortimentActions.TYPES.UPDATE_CATEGORY.SUCCEEDED:
+		case AssortimentActions.TYPES.UPDATE_CATEGORY.FAILED:
+		case AssortimentActions.TYPES.UPDATE_POSITION_FOR_CATEGORY.SUCCEEDED:
+		case AssortimentActions.TYPES.UPDATE_POSITION_FOR_CATEGORY.FAILED:
 			return set('isVisible', false, state);
 		default:
 			return state;
