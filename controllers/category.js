@@ -38,7 +38,7 @@ module.exports.create = async function (req, res) {
   const category = new Category({
     name: req.body.name,
     user: req.user.id,
-    imageSrc: req.file ? `` : "",
+    imageSrc: req.file ? `${keys.apiUrl}/${req.file.path}` : "",
     key: keys.apiUrl
   });
 
@@ -57,7 +57,7 @@ module.exports.update = async function (req, res) {
   const updated = { name: req.body.name };
 
   if (req.file) {
-    updated.imageSrc = req.file.path;
+    updated.imageSrc = `${keys.apiUrl}/${req.file.path}`;
   }
 
   try {
