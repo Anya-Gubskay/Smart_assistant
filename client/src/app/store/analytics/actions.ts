@@ -1,6 +1,5 @@
 import { Action } from "@ngrx/store";
-import { ActionWithPayload, getActionDescription, getModuleDataLoadingActionsCreator } from "../store.helper";
-import { Order } from "src/app/shared/entities/order.entity";
+import { getActionDescription, getModuleDataLoadingActionsCreator } from "../store.helper";
 
 export namespace AnalyticsActions {
   const moduleName = 'Analytics';

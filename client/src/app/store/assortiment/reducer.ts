@@ -1,5 +1,5 @@
 import {AssortimentActions} from './actions';
-import {ActionWithObjectPayload, ActionWithPayload, getDataLoaderReducer} from '../store.helper';
+import {getDataLoaderReducer} from '../store.helper';
 import {LoadingStatus} from 'src/app/shared/interfaces/common.interface';
 import {status} from 'src/app/shared/constants/common.constats';
 import {Categories} from 'src/app/shared/entities/categories.entity';

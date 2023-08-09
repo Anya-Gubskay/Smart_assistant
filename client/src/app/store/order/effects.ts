@@ -1,14 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Actions, ofType, createEffect} from '@ngrx/effects';
-import {debounceTime, switchMap, takeUntil, withLatestFrom} from 'rxjs';
+import {debounceTime, switchMap, takeUntil} from 'rxjs';
 import {DEFAULT_REQUEST_DEBOUNCE_MS} from 'src/app/shared/constants/common.constats';
-import {CategoriesService} from 'src/app/shared/api/categories/categories.api.service';
 import {mapActions} from '../store.helper';
-import {AppState} from '../rootReducer';
-import {Store} from '@ngrx/store';
-import {ToastService} from 'src/app/shared/components/toast/toast-service';
 import {OrderActions} from './actions';
-import {PositionsService} from 'src/app/shared/api/positions/positions.service';
 import {OrdersService} from 'src/app/shared/api/orders/orders.service';
 
 @Injectable()
