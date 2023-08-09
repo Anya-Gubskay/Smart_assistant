@@ -35,11 +35,10 @@ module.exports.remove = async function (req, res) {
 };
 
 module.exports.create = async function (req, res) {
-  console.log(keys.apiUrl);
   const category = new Category({
     name: req.body.name,
     user: req.user.id,
-    imageSrc: req.file ? `` : "",
+    imageSrc: req.file ? `${keys.apiUrl}/${req.file.path}` : "",
     key: keys.apiUrl
   });
 
