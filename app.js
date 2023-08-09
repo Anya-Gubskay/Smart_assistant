@@ -21,7 +21,7 @@ require("./middleware/passport")(passport);
 //to see what is happening with the server at the moment
 app.use(require("morgan")("dev"));
 //send images from a folder by url
-app.use("/uploads", express.static("uploads"));
+app.use("/uploads", express.static("../../../../../uploads"));
 //to get req.body in json format
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
