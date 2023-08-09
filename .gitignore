@@ -3,7 +3,6 @@
 node_modules
 .vscode
 config/keys.dev.js
-uploads/*
 client/etc/
 .env
 .firebaserc
