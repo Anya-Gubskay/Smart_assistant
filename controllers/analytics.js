@@ -13,7 +13,7 @@ module.exports.getOverview = async function(req, res) {
 
     // Total number of days
     const daysNumber = Object.keys(ordersMap).length
-    // Number of orders yesterday
+    // Number of orders today
     const todayOrdersNumber = todayOrders.length
     // Orders per day
     const ordersPerDay = (totalOrdersNumber / daysNumber).toFixed(0)

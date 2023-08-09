@@ -23,14 +23,14 @@ export namespace OverviewPage {
   export const ConfigRevenue: Config = {
       title: 'Revenue',
       unit: '$',
-      description:'Your business revenue yesterday',
+      description:'Your business revenue today',
       color: COLOR.revenue
   }
 
   export const ConfigOrders: Config = {
     title: 'Orders',
     unit: 'ord.',
-    description: 'The number of orders yesterday is',
+    description: 'The number of orders today is',
     color: COLOR.orders
 }
 }

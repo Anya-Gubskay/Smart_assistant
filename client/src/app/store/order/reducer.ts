@@ -1,6 +1,5 @@
 import {LoadingStatus} from 'src/app/shared/interfaces/common.interface';
 import {status} from 'src/app/shared/constants/common.constats';
-import {Categories} from 'src/app/shared/entities/categories.entity';
 import { OrderActions } from './actions';
 import { getDataLoaderReducer } from '../store.helper';
 import { Order } from 'src/app/shared/entities/order.entity';
