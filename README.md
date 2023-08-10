@@ -9,7 +9,7 @@
 ## Account ready for visual review:
   email:
   ```bash
-  user@mail.ru
+  user@gmail.ru
   ```
   password:
   ```bash
