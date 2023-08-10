@@ -2,6 +2,7 @@ const Category = require("../models/category");
 const Position = require("../models/position");
 const errorHandler = require("../utils/errorHandler");
 const keys = require("../config/keys");
+const fs = require('fs');
 
 module.exports.getAll = async function (req, res) {
   try {
@@ -25,10 +26,21 @@ module.exports.remove = async function (req, res) {
   try {
     await Category.deleteOne({ _id: req.params.id });
     await Position.deleteMany({ category: req.params.id });
+    
     res.status(200).json({
       message: "Сategory has been removed",
       data: {id: req.params.id}
     });
+
+    let from = req.params.imageSrc.search('uploads');
+    let to = req.params.imageSrc.length;
+    const nameImage = req.params.imageSrc.substring(from, to);
+    fs.unlink(`../../../../../${nameImage}`, (err) => {
+      if (err) {
+          console.log(err)
+      }
+      console.log("Delete File successfully.");
+  });
   } catch (e) {
     errorHandler(res, e);
   }
