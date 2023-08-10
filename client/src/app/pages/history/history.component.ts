@@ -8,7 +8,7 @@ import {ModalService} from 'src/app/shared/services/modal.service';
 import {OrderService} from '../order/order.service';
 import {cloneDeep} from 'lodash';
 import {HistoryFormOrderComponent} from './history-form-order/history-form-order/history-form-order.component';
-import { Common } from 'src/app/shared/entities/common.entity';
+import {Common} from 'src/app/shared/entities/common.entity';
 @Component({
 	selector: 'app-history',
 	standalone: true,
@@ -25,7 +25,7 @@ export class HistoryComponent implements OnDestroy {
 	constructor(
 		protected modalService: ModalService,
 		public order: OrderService,
-    private currencyPipe: CurrencyPipe
+		private currencyPipe: CurrencyPipe
 	) {}
 
 	public onClickRow(row: Order.OrderByCategory): void {
@@ -34,10 +34,14 @@ export class HistoryComponent implements OnDestroy {
 
 	public openModal(item: Table.Row): void {
 		this.order.list = cloneDeep(item.list);
-    this.order.price = item.total;
-		this.modalService.open<{numberOrder: number}>(HistoryFormOrderComponent, {
-			numberOrder: item.order,
-		}, new Common.OptionModal('70%', '70%'));
+		this.order.price = item.total;
+		this.modalService.open<{numberOrder: number}>(
+			HistoryFormOrderComponent,
+			{
+				numberOrder: item.order,
+			},
+			new Common.OptionModal('70%', '70%')
+		);
 	}
 
 	ngOnDestroy(): void {

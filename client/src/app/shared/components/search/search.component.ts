@@ -1,23 +1,23 @@
-import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { SharedModule } from '../../shared.module';
-import { map } from 'rxjs';
-import { UntypedFormControl } from '@angular/forms';
+import {CommonModule} from '@angular/common';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {SharedModule} from '../../shared.module';
+import {map} from 'rxjs';
+import {UntypedFormControl} from '@angular/forms';
 
 @Component({
-  selector: 'app-search',
-  standalone: true,
-  imports: [CommonModule, SharedModule],
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+	selector: 'app-search',
+	standalone: true,
+	imports: [CommonModule, SharedModule],
+	templateUrl: './search.component.html',
+	styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent {
-  @Input() label!: string;
+	@Input() label!: string;
 	@Input() placeholder!: string;
 	@Input() showSearchIcon = true;
 	@Input() value!: string;
 	@Input() disableTrim = false;
-  @Input() size = '20rem';
+	@Input() size = '20rem';
 
 	@Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
 
@@ -28,10 +28,10 @@ export class SearchComponent {
 		this.inputControl.valueChanges
 			.pipe(map(this.getValue.bind(this) as (value: unknown, index: number) => unknown))
 			.subscribe({
-       next: (value) => {
-				this.valueChange.emit(value as string);
-			}
-    })
+				next: (value) => {
+					this.valueChange.emit(value as string);
+				},
+			});
 	}
 
 	ngOnChanges(changes: any): void {

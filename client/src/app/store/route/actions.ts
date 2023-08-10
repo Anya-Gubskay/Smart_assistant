@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
 import {NavigationExtras, Params, QueryParamsHandling} from '@angular/router';
-import { ActionWithPayload, getActionDescription } from '../store.helper';
+import {ActionWithPayload, getActionDescription} from '../store.helper';
 
 export namespace RouterActions {
 	const moduleName = 'Router';
@@ -17,13 +17,16 @@ export namespace RouterActions {
 
 		constructor(
 			public url: string,
-			public extras?: NavigationExtras,
+			public extras?: NavigationExtras
 		) {}
 	}
 
 	export class SetQueryParams implements Action {
 		readonly type = TYPES.SET_PARAM;
-    
-		constructor(public payload: Params, public queryParamsHandling: QueryParamsHandling = 'merge') {}
+
+		constructor(
+			public payload: Params,
+			public queryParamsHandling: QueryParamsHandling = 'merge'
+		) {}
 	}
 }

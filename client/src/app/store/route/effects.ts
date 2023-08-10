@@ -10,7 +10,9 @@ export class RouterEffects {
 		() =>
 			this.actions$.pipe(
 				ofType<RouterActions.RouterGo>(RouterActions.TYPES.GO),
-				tap((action:RouterActions.RouterGo) => this.router.navigate([action.url], action.extras))
+				tap((action: RouterActions.RouterGo) =>
+					this.router.navigate([action.url], action.extras)
+				)
 			),
 		{dispatch: false}
 	);
@@ -34,7 +36,7 @@ export class RouterEffects {
 	constructor(
 		private actions$: Actions,
 		private router: Router,
-		private route: ActivatedRoute,
+		private route: ActivatedRoute
 	) {
 		this.listenToRouter();
 	}
@@ -44,17 +46,17 @@ export class RouterEffects {
 			this.checkUrlChange();
 		});
 
-		this.router.events.pipe(filter((event) => event instanceof NavigationStart)).subscribe((e) => {
-			this.checkPageAccess(e as NavigationStart);
-		});
+		this.router.events
+			.pipe(filter((event) => event instanceof NavigationStart))
+			.subscribe((e) => {
+				this.checkPageAccess(e as NavigationStart);
+			});
 	}
 
-	private checkUrlChange(): void {
-	}
+	private checkUrlChange(): void {}
 
 	/**
 	 * Currently supports only billing page
 	 */
-	private checkPageAccess(event: NavigationStart): void {
-	}
+	private checkPageAccess(event: NavigationStart): void {}
 }

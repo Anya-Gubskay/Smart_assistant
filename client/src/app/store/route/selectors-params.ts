@@ -2,7 +2,7 @@ import {createSelector} from '@ngrx/store';
 import {RouterReducerState} from '@ngrx/router-store';
 import {path} from 'lodash/fp';
 import {Params} from '@angular/router';
-import { RouterSelectors } from './selectors';
+import {RouterSelectors} from './selectors';
 
 export namespace RouterParamsSelectors {
 	/**
@@ -11,13 +11,14 @@ export namespace RouterParamsSelectors {
 
 	export const getUrlQueryParams = createSelector(
 		RouterSelectors.getState,
-		(routerState: RouterReducerState) => path(['state', 'root', 'queryParams'], routerState) || {}
+		(routerState: RouterReducerState) =>
+			path(['state', 'root', 'queryParams'], routerState) || {}
 	);
 
-  export const getSelectedItmeId = createSelector(
-    RouterSelectors.getRouterParams(2),
-    (params: Params) => params?.id
-  )
+	export const getSelectedItmeId = createSelector(
+		RouterSelectors.getRouterParams(2),
+		(params: Params) => params?.id
+	);
 
 	/**
 	 * Collections

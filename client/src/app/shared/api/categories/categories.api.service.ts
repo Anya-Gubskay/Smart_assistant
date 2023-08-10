@@ -4,7 +4,7 @@ import {Observable, of} from 'rxjs';
 import {Item, Message} from '../../interfaces/common.interface';
 import {CategoriesApiModel} from './categories.api.interface';
 import {Categories} from '../../entities/categories.entity';
-import { CategoriesApiMapper } from './categories.api.mapper';
+import {CategoriesApiMapper} from './categories.api.mapper';
 
 @Injectable({providedIn: 'root'})
 export class CategoriesService {
@@ -16,7 +16,7 @@ export class CategoriesService {
 
 	addCategory({name, image}: Categories.Category): Observable<CategoriesApiModel.Category> {
 		const data = this.create(name, image);
-		return this.http.post<CategoriesApiModel.Category>('/api/category', data)
+		return this.http.post<CategoriesApiModel.Category>('/api/category', data);
 	}
 
 	create(name: string, image?: File): FormData {
@@ -30,11 +30,15 @@ export class CategoriesService {
 		return fd;
 	}
 
-  getCategoryById(id: string): Observable<CategoriesApiModel.Category> {
+	getCategoryById(id: string): Observable<CategoriesApiModel.Category> {
 		return this.http.get<CategoriesApiModel.Category>(`/api/category/${id}`);
 	}
 
-	updateCategory({_id, name, image}: Categories.Category): Observable<CategoriesApiModel.Category> {
+	updateCategory({
+		_id,
+		name,
+		image,
+	}: Categories.Category): Observable<CategoriesApiModel.Category> {
 		const fd = new FormData();
 
 		if (image) {
@@ -43,8 +47,6 @@ export class CategoriesService {
 		fd.append('name', name);
 		return this.http.patch<CategoriesApiModel.Category>(`/api/category/${_id}`, fd);
 	}
-
-
 
 	fetch(): Observable<Categories.Category[]> {
 		return this.http.get<Categories.Category[]>('/api/category');

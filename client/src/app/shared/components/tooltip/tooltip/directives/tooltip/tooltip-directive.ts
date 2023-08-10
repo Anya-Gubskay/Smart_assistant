@@ -1,5 +1,5 @@
 import {
-  ApplicationRef,
+	ApplicationRef,
 	ChangeDetectorRef,
 	ComponentRef,
 	Directive,
@@ -9,12 +9,12 @@ import {
 	ViewContainerRef,
 } from '@angular/core';
 import {TooltipComponent} from './tooltip.component';
-import { TooltipPosition } from './tooltip.enum';
-import { TooltipSettings } from './tooltip.interface';
+import {TooltipPosition} from './tooltip.enum';
+import {TooltipSettings} from './tooltip.interface';
 
 @Directive({
 	selector: '[tooltip]',
-  standalone: true
+	standalone: true,
 })
 export class TooltipDirective {
 	@Input() tooltip: TooltipSettings | null = null;
@@ -56,7 +56,8 @@ export class TooltipDirective {
 			this.componentRef.instance.tooltip.position = this.tooltip?.position;
 			this.componentRef.instance.tooltip.theme = this.tooltip?.theme;
 
-			const {left, right, top, bottom} = this.elementRef.nativeElement.getBoundingClientRect();
+			const {left, right, top, bottom} =
+				this.elementRef.nativeElement.getBoundingClientRect();
 
 			switch (this.tooltip?.position) {
 				case TooltipPosition.BELOW: {

@@ -18,10 +18,12 @@ export class AssortimentEffects {
 			ofType(AssortimentActions.TYPES.GET_CATEGORIES.REQUESTED),
 			debounceTime(DEFAULT_REQUEST_DEBOUNCE_MS),
 			switchMap(() =>
-				this.categoriesApiService.getCategories().pipe(
-          mapActions(AssortimentActions.TYPES.GET_CATEGORIES),
-          takeUntil(this.actions$.pipe(ofType(AssortimentActions.TYPES.CLEAR_MODULE)))
-          )
+				this.categoriesApiService
+					.getCategories()
+					.pipe(
+						mapActions(AssortimentActions.TYPES.GET_CATEGORIES),
+						takeUntil(this.actions$.pipe(ofType(AssortimentActions.TYPES.CLEAR_MODULE)))
+					)
 			)
 		)
 	);
@@ -31,7 +33,10 @@ export class AssortimentEffects {
 			this.actions$.pipe(
 				ofType(AssortimentActions.TYPES.INITIAL_CATEGORY_PAGE),
 				withLatestFrom(this.store.select(PagesSelectors.getIsPageNewCategory)),
-				filter(([_, isNewPage]: [AssortimentActions.initialCategoryPage, boolean]) => !isNewPage),
+				filter(
+					([_, isNewPage]: [AssortimentActions.initialCategoryPage, boolean]) =>
+						!isNewPage
+				),
 				tap(() => this.store.dispatch(new AssortimentActions.GetCategoryById()))
 			),
 		{dispatch: false}
@@ -39,14 +44,18 @@ export class AssortimentEffects {
 
 	getCategoryById$ = createEffect(() =>
 		this.actions$.pipe(
-			ofType<AssortimentActions.GetCategoryById>(AssortimentActions.TYPES.GET_CATEGORY.REQUESTED),
+			ofType<AssortimentActions.GetCategoryById>(
+				AssortimentActions.TYPES.GET_CATEGORY.REQUESTED
+			),
 			debounceTime(DEFAULT_REQUEST_DEBOUNCE_MS),
 			withLatestFrom(this.store.select(RouterParamsSelectors.getSelectedItmeId)),
 			switchMap(([_, id]: [AssortimentActions.GetCategoryById, string]) =>
-				this.categoriesApiService.getCategoryById(id).pipe(
-          mapActions(AssortimentActions.TYPES.GET_CATEGORY),
-          takeUntil(this.actions$.pipe(ofType(AssortimentActions.TYPES.CLEAR_MODULE)))
-          )
+				this.categoriesApiService
+					.getCategoryById(id)
+					.pipe(
+						mapActions(AssortimentActions.TYPES.GET_CATEGORY),
+						takeUntil(this.actions$.pipe(ofType(AssortimentActions.TYPES.CLEAR_MODULE)))
+					)
 			)
 		)
 	);
@@ -60,51 +69,54 @@ export class AssortimentEffects {
 		{dispatch: false}
 	);
 
-  addCategory$ = createEffect(() =>
-  this.actions$.pipe(
-    ofType<AssortimentActions.AddCategory>(AssortimentActions.TYPES.ADD_CATEGORY.REQUESTED),
-    debounceTime(DEFAULT_REQUEST_DEBOUNCE_MS),
-    switchMap((_: AssortimentActions.AddCategory) =>
-      this.categoriesApiService
-        .addCategory(_.payload.category)
-        .pipe(
-          mapActions(AssortimentActions.TYPES.ADD_CATEGORY),
-          takeUntil(this.actions$.pipe(ofType(AssortimentActions.TYPES.CLEAR_MODULE)))
-          )
-    )
-  )
-);
+	addCategory$ = createEffect(() =>
+		this.actions$.pipe(
+			ofType<AssortimentActions.AddCategory>(AssortimentActions.TYPES.ADD_CATEGORY.REQUESTED),
+			debounceTime(DEFAULT_REQUEST_DEBOUNCE_MS),
+			switchMap((_: AssortimentActions.AddCategory) =>
+				this.categoriesApiService
+					.addCategory(_.payload.category)
+					.pipe(
+						mapActions(AssortimentActions.TYPES.ADD_CATEGORY),
+						takeUntil(this.actions$.pipe(ofType(AssortimentActions.TYPES.CLEAR_MODULE)))
+					)
+			)
+		)
+	);
 
 	updateCategory$ = createEffect(() =>
 		this.actions$.pipe(
-			ofType<AssortimentActions.UpdateCategory>(AssortimentActions.TYPES.UPDATE_CATEGORY.REQUESTED),
+			ofType<AssortimentActions.UpdateCategory>(
+				AssortimentActions.TYPES.UPDATE_CATEGORY.REQUESTED
+			),
 			debounceTime(DEFAULT_REQUEST_DEBOUNCE_MS),
 			switchMap((_: AssortimentActions.UpdateCategory) =>
 				this.categoriesApiService
 					.updateCategory(_.payload.category)
 					.pipe(
-            mapActions(AssortimentActions.TYPES.UPDATE_CATEGORY),
-            takeUntil(this.actions$.pipe(ofType(AssortimentActions.TYPES.CLEAR_MODULE)))
-            )
+						mapActions(AssortimentActions.TYPES.UPDATE_CATEGORY),
+						takeUntil(this.actions$.pipe(ofType(AssortimentActions.TYPES.CLEAR_MODULE)))
+					)
 			)
 		)
 	);
 
-  deleteCategory$ = createEffect(() =>
-  this.actions$.pipe(
-    ofType<AssortimentActions.DeleteCategory>(AssortimentActions.TYPES.DELETE_CATEGORY.REQUESTED),
-    debounceTime(DEFAULT_REQUEST_DEBOUNCE_MS),
-    switchMap((_: AssortimentActions.DeleteCategory) =>
-      this.categoriesApiService
-        .deleteCategory(_.payload.category._id)
-        .pipe(
-          mapActions(AssortimentActions.TYPES.DELETE_CATEGORY),
-          takeUntil(this.actions$.pipe(ofType(AssortimentActions.TYPES.CLEAR_MODULE)))
-          )
-    )
-  )
-);
-
+	deleteCategory$ = createEffect(() =>
+		this.actions$.pipe(
+			ofType<AssortimentActions.DeleteCategory>(
+				AssortimentActions.TYPES.DELETE_CATEGORY.REQUESTED
+			),
+			debounceTime(DEFAULT_REQUEST_DEBOUNCE_MS),
+			switchMap((_: AssortimentActions.DeleteCategory) =>
+				this.categoriesApiService
+					.deleteCategory(_.payload.category._id)
+					.pipe(
+						mapActions(AssortimentActions.TYPES.DELETE_CATEGORY),
+						takeUntil(this.actions$.pipe(ofType(AssortimentActions.TYPES.CLEAR_MODULE)))
+					)
+			)
+		)
+	);
 
 	getPositionsByCategory$ = createEffect(() =>
 		this.actions$.pipe(
@@ -117,54 +129,60 @@ export class AssortimentEffects {
 				this.positionsService
 					.getPositionByCategory(idCategory)
 					.pipe(
-            mapActions(AssortimentActions.TYPES.GET_POSITIONS_BY_CATEGORY),
-            takeUntil(this.actions$.pipe(ofType(AssortimentActions.TYPES.CLEAR_MODULE)))
-            )
+						mapActions(AssortimentActions.TYPES.GET_POSITIONS_BY_CATEGORY),
+						takeUntil(this.actions$.pipe(ofType(AssortimentActions.TYPES.CLEAR_MODULE)))
+					)
 			)
 		)
 	);
 
 	addPositionForCategory$ = createEffect(() =>
 		this.actions$.pipe(
-			ofType<AssortimentActions.AddPosition>(AssortimentActions.TYPES.ADD_POSITION_FOR_CATEGORY.REQUESTED),
+			ofType<AssortimentActions.AddPosition>(
+				AssortimentActions.TYPES.ADD_POSITION_FOR_CATEGORY.REQUESTED
+			),
 			debounceTime(DEFAULT_REQUEST_DEBOUNCE_MS),
 			switchMap((_: AssortimentActions.AddPosition) =>
 				this.positionsService
 					.addPositionForCategory(_.payload.position)
 					.pipe(
-            mapActions(AssortimentActions.TYPES.ADD_POSITION_FOR_CATEGORY),
-            takeUntil(this.actions$.pipe(ofType(AssortimentActions.TYPES.CLEAR_MODULE)))
-            )
+						mapActions(AssortimentActions.TYPES.ADD_POSITION_FOR_CATEGORY),
+						takeUntil(this.actions$.pipe(ofType(AssortimentActions.TYPES.CLEAR_MODULE)))
+					)
 			)
 		)
 	);
 
 	updatePositionForCategory$ = createEffect(() =>
 		this.actions$.pipe(
-			ofType<AssortimentActions.UpdatePosition>(AssortimentActions.TYPES.UPDATE_POSITION_FOR_CATEGORY.REQUESTED),
+			ofType<AssortimentActions.UpdatePosition>(
+				AssortimentActions.TYPES.UPDATE_POSITION_FOR_CATEGORY.REQUESTED
+			),
 			debounceTime(DEFAULT_REQUEST_DEBOUNCE_MS),
 			switchMap((_: AssortimentActions.UpdatePosition) =>
 				this.positionsService
 					.updatePositionForCategory(_.payload.position)
 					.pipe(
-            mapActions(AssortimentActions.TYPES.UPDATE_POSITION_FOR_CATEGORY),
-            takeUntil(this.actions$.pipe(ofType(AssortimentActions.TYPES.CLEAR_MODULE)))
-            )
+						mapActions(AssortimentActions.TYPES.UPDATE_POSITION_FOR_CATEGORY),
+						takeUntil(this.actions$.pipe(ofType(AssortimentActions.TYPES.CLEAR_MODULE)))
+					)
 			)
 		)
 	);
 
 	deletePositionForCategory$ = createEffect(() =>
 		this.actions$.pipe(
-			ofType<AssortimentActions.DeletePosition>(AssortimentActions.TYPES.DELETE_POSITION_FOR_CATEGORY.REQUESTED),
+			ofType<AssortimentActions.DeletePosition>(
+				AssortimentActions.TYPES.DELETE_POSITION_FOR_CATEGORY.REQUESTED
+			),
 			debounceTime(DEFAULT_REQUEST_DEBOUNCE_MS),
 			switchMap((_: AssortimentActions.DeletePosition) =>
 				this.positionsService
 					.deletePositionForCategory(_.payload.position._id)
 					.pipe(
-            mapActions(AssortimentActions.TYPES.DELETE_POSITION_FOR_CATEGORY),
-            takeUntil(this.actions$.pipe(ofType(AssortimentActions.TYPES.CLEAR_MODULE)))
-            )
+						mapActions(AssortimentActions.TYPES.DELETE_POSITION_FOR_CATEGORY),
+						takeUntil(this.actions$.pipe(ofType(AssortimentActions.TYPES.CLEAR_MODULE)))
+					)
 			)
 		)
 	);

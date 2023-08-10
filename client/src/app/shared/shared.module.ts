@@ -22,46 +22,46 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatRadioModule} from '@angular/material/radio';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MatSliderModule} from '@angular/material/slider';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
 @NgModule({
-  exports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatExpansionModule,
-    MatButtonModule,
-    MatButtonToggleModule,
-    MatRadioModule,
-    MatDialogModule,
-    MatIconModule,
-    MatCheckboxModule,
-    MatInputModule,
-    MatMenuModule,
-    MatTableModule,
-    MatTooltipModule,
-    MatDividerModule,
-    MatOptionModule,
-    MatAutocompleteModule,
-    MatProgressBarModule,
-    MatSelectModule,
-    MatChipsModule,
-    MatSlideToggleModule,
-    MatDatepickerModule,
-    MatSliderModule,
-    ScrollingModule,
-    MatRippleModule,
-    MatToolbarModule,
-    MatCardModule,
-    MatListModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatProgressBarModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-  ],
+	exports: [
+		CommonModule,
+		FormsModule,
+		ReactiveFormsModule,
+		MatExpansionModule,
+		MatButtonModule,
+		MatButtonToggleModule,
+		MatRadioModule,
+		MatDialogModule,
+		MatIconModule,
+		MatCheckboxModule,
+		MatInputModule,
+		MatMenuModule,
+		MatTableModule,
+		MatTooltipModule,
+		MatDividerModule,
+		MatOptionModule,
+		MatAutocompleteModule,
+		MatProgressBarModule,
+		MatSelectModule,
+		MatChipsModule,
+		MatSlideToggleModule,
+		MatDatepickerModule,
+		MatSliderModule,
+		ScrollingModule,
+		MatRippleModule,
+		MatToolbarModule,
+		MatCardModule,
+		MatListModule,
+		MatPaginatorModule,
+		MatSortModule,
+		MatProgressBarModule,
+		MatDatepickerModule,
+		MatNativeDateModule,
+	],
 })
 export class SharedModule {}

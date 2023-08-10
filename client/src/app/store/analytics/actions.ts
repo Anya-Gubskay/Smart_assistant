@@ -1,21 +1,21 @@
-import { Action } from "@ngrx/store";
-import { getActionDescription, getModuleDataLoadingActionsCreator } from "../store.helper";
+import {Action} from '@ngrx/store';
+import {getActionDescription, getModuleDataLoadingActionsCreator} from '../store.helper';
 
 export namespace AnalyticsActions {
-  const moduleName = 'Analytics';
-  const createDataLoadingActions = getModuleDataLoadingActionsCreator(moduleName);
+	const moduleName = 'Analytics';
+	const createDataLoadingActions = getModuleDataLoadingActionsCreator(moduleName);
 	const getDesc = (desc: string) => getActionDescription(moduleName, '', desc);
 
-  export const TYPES = {
-    GET_DATA: createDataLoadingActions('get data analytics'),
-    CLEAR_MODULE: getDesc('clear module')
-  }
+	export const TYPES = {
+		GET_DATA: createDataLoadingActions('get data analytics'),
+		CLEAR_MODULE: getDesc('clear module'),
+	};
 
-  export class GetData implements Action {
+	export class GetData implements Action {
 		readonly type = TYPES.GET_DATA.REQUESTED;
 	}
 
-  export class ClearePage implements Action {
+	export class ClearePage implements Action {
 		readonly type = TYPES.CLEAR_MODULE;
 	}
 }

@@ -70,8 +70,8 @@ export class LoginComponent implements OnInit {
 		this.authorization.emit({user: this.formGroup.value, isFormLogin: false});
 	}
 
-  public clickIcon($event: MouseEvent): void {
-    $event.preventDefault();
-    this.hide = !this.hide;
-  }
+	public clickIcon($event: MouseEvent): void {
+		$event.preventDefault();
+		this.hide = !this.hide;
+	}
 }

@@ -26,7 +26,7 @@ export class OverviewComponent {
 	@Input() data!: OverviewPage.Overview | null;
 	@Input() loadingStatus!: LoadingStatus | null;
 
-  public date!: string;
+	public date!: string;
 	public readonly CONFIG_REVENUE = OverviewPage.ConfigRevenue;
 	public readonly CONFIG_ORDERS = OverviewPage.ConfigOrders;
 	public readonly TOOLTIP_SETTINGS: TooltipSettings = {

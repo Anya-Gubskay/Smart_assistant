@@ -1,5 +1,8 @@
 export class Item {
-  constructor(public name: string, public _id: string = ''){}
+	constructor(
+		public name: string,
+		public _id: string = ''
+	) {}
 }
 
 export interface OptionModal {
@@ -12,7 +15,6 @@ export interface User {
 	password: string;
 	email: string;
 }
-
 
 export interface Position {
 	_id?: string;
@@ -37,7 +39,7 @@ export interface Order {
 export interface MapOrder {
 	_id?: string;
 	date?: string;
-  order?: number;
+	order?: number;
 	time?: string;
 	price?: number;
 	list: OrderListItem[];

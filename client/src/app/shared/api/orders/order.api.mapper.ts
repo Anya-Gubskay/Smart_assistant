@@ -1,3 +1,1 @@
-export class OrderApiMapper {
-
-}
+export class OrderApiMapper {}

@@ -12,12 +12,7 @@ import {Categories} from 'src/app/shared/entities/categories.entity';
 @Component({
 	selector: 'app-assortiment',
 	standalone: true,
-	imports: [
-		CommonModule,
-		SharedModule,
-		TodoListComponent,
-		ModalComponent,
-	],
+	imports: [CommonModule, SharedModule, TodoListComponent, ModalComponent],
 	templateUrl: './assortiment.component.html',
 	styleUrls: ['./assortiment.component.scss'],
 })

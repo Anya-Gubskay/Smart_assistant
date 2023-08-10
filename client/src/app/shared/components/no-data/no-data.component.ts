@@ -8,9 +8,9 @@ export interface NoDataConfig {
 
 @Component({
 	selector: 'app-no-data',
-  standalone: true,
+	standalone: true,
 	templateUrl: './no-data.component.html',
-	styleUrls: ['./no-data.component.scss']
+	styleUrls: ['./no-data.component.scss'],
 })
 export class AppNoDataComponent {
 	@Input() size: NoDataConfig['size'] = 's';

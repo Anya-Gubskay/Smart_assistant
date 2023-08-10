@@ -25,7 +25,7 @@ export class CategoryComponent implements OnChanges {
 	@Input() category!: Categories.Category | null;
 	@Input() loadingStatus!: LoadingStatus | null;
 	private image!: File;
-	public imagePreview: string = '';
+	public imagePreview = '';
 	public formGroup!: UntypedFormGroup;
 
 	@Output() addCategory = new EventEmitter<Categories.Category>();

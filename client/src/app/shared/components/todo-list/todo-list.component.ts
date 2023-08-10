@@ -18,7 +18,7 @@ import {LoaderComponent} from '../loader/loader/loader.component';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {SearchComponent} from '../search/search.component';
 import {FilterItemsByParamsPipe} from '../../pipes/filter-items-by-string.pipe';
-import { AppNoDataComponent } from '../no-data/no-data.component';
+import {AppNoDataComponent} from '../no-data/no-data.component';
 
 @Component({
 	selector: 'app-todo-list',
@@ -31,7 +31,7 @@ import { AppNoDataComponent } from '../no-data/no-data.component';
 		LoaderComponent,
 		SearchComponent,
 		FilterItemsByParamsPipe,
-    AppNoDataComponent,
+		AppNoDataComponent,
 	],
 	templateUrl: './todo-list.component.html',
 	styleUrls: ['./todo-list.component.scss'],

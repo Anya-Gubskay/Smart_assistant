@@ -1,7 +1,6 @@
-import { LoadingStatus, Statuses } from "../interfaces/common.interface";
+import {LoadingStatus, Statuses} from '../interfaces/common.interface';
 
 export const DEFAULT_REQUEST_DEBOUNCE_MS = 400;
-
 
 export const status: Statuses = {
 	default: {loading: false, loaded: false, error: null},
@@ -11,8 +10,8 @@ export const status: Statuses = {
 };
 
 export const COLOR: Record<string, string> = {
-  revenue: '#B7A6F6',
-  orders: '#88A3E2'
-}
+	revenue: '#B7A6F6',
+	orders: '#88A3E2',
+};
 
-export const DEFAULT_FORMAT_DATE = 'MM.DD.YYYY'
+export const DEFAULT_FORMAT_DATE = 'MM.DD.YYYY';

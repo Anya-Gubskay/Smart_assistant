@@ -12,7 +12,9 @@ import {Routing} from 'src/app/shared/entities/routing.entity';
 export class AuthorizationEffects {
 	registration$ = createEffect(() =>
 		this.actions$.pipe(
-			ofType<AuthorizationActions.Registration>(AuthorizationActions.TYPES.REGISTRATION.REQUESTED),
+			ofType<AuthorizationActions.Registration>(
+				AuthorizationActions.TYPES.REGISTRATION.REQUESTED
+			),
 			debounceTime(DEFAULT_REQUEST_DEBOUNCE_MS),
 			switchMap((_: AuthorizationActions.Registration) =>
 				this.authorizationApiService
@@ -24,13 +26,17 @@ export class AuthorizationEffects {
 
 	registrationCompleted$ = createEffect(() =>
 		this.actions$.pipe(
-			ofType<AuthorizationActions.RegistrationCompleted>(AuthorizationActions.TYPES.REGISTRATION.SUCCEEDED),
+			ofType<AuthorizationActions.RegistrationCompleted>(
+				AuthorizationActions.TYPES.REGISTRATION.SUCCEEDED
+			),
 			map(
 				(_: AuthorizationActions.RegistrationCompleted) =>
-         new RouterActions.RouterGo(Routing.AUTH_CHILDREN?.[Routing.KeyUrl.Login].path || '', {
-						replaceUrl: true,
-					})
-
+					new RouterActions.RouterGo(
+						Routing.AUTH_CHILDREN?.[Routing.KeyUrl.Login].path || '',
+						{
+							replaceUrl: true,
+						}
+					)
 			)
 		)
 	);
@@ -40,22 +46,27 @@ export class AuthorizationEffects {
 			ofType<AuthorizationActions.Login>(AuthorizationActions.TYPES.LOGIN.REQUESTED),
 			debounceTime(DEFAULT_REQUEST_DEBOUNCE_MS),
 			switchMap((_: AuthorizationActions.Registration) =>
-				this.authorizationApiService.login(_.payload.user).pipe(mapActions(AuthorizationActions.TYPES.LOGIN))
+				this.authorizationApiService
+					.login(_.payload.user)
+					.pipe(mapActions(AuthorizationActions.TYPES.LOGIN))
 			)
 		)
 	);
 
-  loginCompleted$ = createEffect(() =>
-  this.actions$.pipe(
-    ofType<AuthorizationActions.LoginCompleted>(AuthorizationActions.TYPES.LOGIN.SUCCEEDED),
-    map(
-      (_: AuthorizationActions.LoginCompleted) =>
-        new RouterActions.RouterGo(Routing.MAIN_CHILDREN?.[Routing.KeyUrl.Assortiment].path || '', {
-          replaceUrl: true,
-        })
-    )
-  )
-);
+	loginCompleted$ = createEffect(() =>
+		this.actions$.pipe(
+			ofType<AuthorizationActions.LoginCompleted>(AuthorizationActions.TYPES.LOGIN.SUCCEEDED),
+			map(
+				(_: AuthorizationActions.LoginCompleted) =>
+					new RouterActions.RouterGo(
+						Routing.MAIN_CHILDREN?.[Routing.KeyUrl.Assortiment].path || '',
+						{
+							replaceUrl: true,
+						}
+					)
+			)
+		)
+	);
 
 	constructor(
 		private actions$: Actions,

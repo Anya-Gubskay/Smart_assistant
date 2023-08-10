@@ -21,8 +21,8 @@ export namespace Table {
 
 		customFormatter?: (value: any) => string;
 
-    onClickButton?: (column: Table.ColumnConfig, row: Table.Row) => void;
-    onClickRow?: (column: Table.ColumnConfig, row: Table.Row) => void;
+		onClickButton?: (column: Table.ColumnConfig, row: Table.Row) => void;
+		onClickRow?: (column: Table.ColumnConfig, row: Table.Row) => void;
 	}
 
 	export enum ColumnsTypes {

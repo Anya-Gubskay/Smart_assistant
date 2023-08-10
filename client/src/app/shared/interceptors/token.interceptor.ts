@@ -5,8 +5,7 @@ import {Observable} from 'rxjs';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
-
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+	intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 		const loadingService = inject(AuthService);
 		if (loadingService.isAuthenticated()) {
 			req = req.clone({

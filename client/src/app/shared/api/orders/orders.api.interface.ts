@@ -1,4 +1,3 @@
-
 export namespace OrderApiModel {
 	export interface OrderListItem {
 		_id: string | undefined;
@@ -16,12 +15,11 @@ export namespace OrderApiModel {
 		list: OrderListItem[];
 	}
 
-  export interface Order {
-    _id?: string;
-    date?: Date;
-    order?: number;
-    user?: string;
-    list: OrderListItem[];
-  }
-
+	export interface Order {
+		_id?: string;
+		date?: Date;
+		order?: number;
+		user?: string;
+		list: OrderListItem[];
+	}
 }

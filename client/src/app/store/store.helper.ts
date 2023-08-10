@@ -1,9 +1,9 @@
 import {Observable, OperatorFunction, catchError, defer, map, of} from 'rxjs';
 import {DataLoadingActions} from '../shared/interfaces/common.interface';
-import { flow, set } from 'lodash/fp';
-import { Action } from '@ngrx/store';
-import {status} from '../shared/constants/common.constats'
-import { Params } from '@angular/router';
+import {flow, set} from 'lodash/fp';
+import {Action} from '@ngrx/store';
+import {status} from '../shared/constants/common.constats';
+import {Params} from '@angular/router';
 
 export const getModuleDataLoadingActionsCreator =
 	(moduleName: string) =>
@@ -52,7 +52,12 @@ export const mapActionOnFailed = (
 
 export function mapActions<T>(actionTypes: DataLoadingActionTypes, isPayloadRequired = true) {
 	return (source: Observable<T>) =>
-		defer(() => source.pipe(mapActionOnSuccess(actionTypes, isPayloadRequired), mapActionOnFailed(actionTypes)));
+		defer(() =>
+			source.pipe(
+				mapActionOnSuccess(actionTypes, isPayloadRequired),
+				mapActionOnFailed(actionTypes)
+			)
+		);
 }
 
 export interface ActionWithPayload<T> extends Action {
@@ -73,7 +78,6 @@ export abstract class ActionWithOptionalPayload<T> implements Action {
 
 export type ActionWithObjectPayload = ActionWithPayload<Record<string, unknown>>;
 
-
 export function getDataLoaderReducer<T extends Params>(
 	loadingActions: DataLoadingActions,
 	storeDataKey: string,
@@ -81,7 +85,7 @@ export function getDataLoaderReducer<T extends Params>(
 	action: ActionWithPayload<unknown>
 ): T {
 	const loadingStatusProperty = `${storeDataKey}LoadingStatus`;
-  
+
 	if (!state[loadingStatusProperty]) {
 		console.warn(`Missing store key "${loadingStatusProperty}" will be added automatically`);
 	}
@@ -90,10 +94,13 @@ export function getDataLoaderReducer<T extends Params>(
 		case loadingActions.REQUESTED:
 			return set(loadingStatusProperty, status.loading, state);
 		case loadingActions.SUCCEEDED:
-			return flow(set(loadingStatusProperty, status.loaded), set(storeDataKey, action.payload))(state) as T;
+			return flow(
+				set(loadingStatusProperty, status.loaded),
+				set(storeDataKey, action.payload)
+			)(state) as T;
 		case loadingActions.FAILED:
 			return set(loadingStatusProperty, status.error(action.payload), state);
-      default:
-        return {} as T
+		default:
+			return {} as T;
 	}
 }

@@ -13,10 +13,12 @@ export class OrderEffects {
 			ofType<OrderActions.GetOrder>(OrderActions.TYPES.GET_ORDER.REQUESTED),
 			debounceTime(DEFAULT_REQUEST_DEBOUNCE_MS),
 			switchMap((_: OrderActions.GetOrder) =>
-				this.ordersApiService.getOrders().pipe(
-          mapActions(OrderActions.TYPES.GET_ORDER),
-          takeUntil(this.actions$.pipe(ofType(OrderActions.TYPES.CLEAR_MODULE)))
-          )
+				this.ordersApiService
+					.getOrders()
+					.pipe(
+						mapActions(OrderActions.TYPES.GET_ORDER),
+						takeUntil(this.actions$.pipe(ofType(OrderActions.TYPES.CLEAR_MODULE)))
+					)
 			)
 		)
 	);
@@ -26,16 +28,18 @@ export class OrderEffects {
 			ofType<OrderActions.AddOrder>(OrderActions.TYPES.ADD_ORDER.REQUESTED),
 			debounceTime(DEFAULT_REQUEST_DEBOUNCE_MS),
 			switchMap((_: OrderActions.AddOrder) =>
-				this.ordersApiService.addOrder(_.payload.order).pipe(
-          mapActions(OrderActions.TYPES.ADD_ORDER),
-          takeUntil(this.actions$.pipe(ofType(OrderActions.TYPES.CLEAR_MODULE)))
-          )
+				this.ordersApiService
+					.addOrder(_.payload.order)
+					.pipe(
+						mapActions(OrderActions.TYPES.ADD_ORDER),
+						takeUntil(this.actions$.pipe(ofType(OrderActions.TYPES.CLEAR_MODULE)))
+					)
 			)
 		)
 	);
 
 	constructor(
 		private actions$: Actions,
-		private ordersApiService: OrdersService,
+		private ordersApiService: OrdersService
 	) {}
 }

@@ -1,4 +1,4 @@
-import { TooltipPosition, TooltipTheme } from "./tooltip.enum";
+import {TooltipPosition, TooltipTheme} from './tooltip.enum';
 
 export interface TooltipSettings {
 	title: string;

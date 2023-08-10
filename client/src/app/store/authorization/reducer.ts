@@ -1,21 +1,24 @@
 import {getDataLoaderReducer} from '../store.helper';
 import {LoadingStatus} from 'src/app/shared/interfaces/common.interface';
 import {AuthorizationActions} from './actions';
-import { status } from 'src/app/shared/constants/common.constats';
+import {status} from 'src/app/shared/constants/common.constats';
 
 export interface AuthorizationState {
 	token: string;
-  tokenLoadingStatus: LoadingStatus;
+	tokenLoadingStatus: LoadingStatus;
 }
 
 const initialState: AuthorizationState = {
 	token: '',
-  tokenLoadingStatus: status.default
+	tokenLoadingStatus: status.default,
 };
 
 const TYPES = AuthorizationActions.TYPES;
 
-export function authorizationReducer(state: AuthorizationState = initialState, action: any): AuthorizationState {
+export function authorizationReducer(
+	state: AuthorizationState = initialState,
+	action: any
+): AuthorizationState {
 	switch (action.type) {
 		case TYPES.REGISTRATION.REQUESTED:
 		case TYPES.REGISTRATION.SUCCEEDED:

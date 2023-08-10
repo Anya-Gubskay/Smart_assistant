@@ -21,7 +21,7 @@ import {PickerDateRangeComponent} from '../picker-date-range/picker-date-range.c
 import {PickerDateRange} from '../picker-date-range/picker-date-range.entity';
 import * as moment from 'moment';
 import {DEFAULT_FORMAT_DATE} from '../../constants/common.constats';
-import { AppNoDataComponent } from '../no-data/no-data.component';
+import {AppNoDataComponent} from '../no-data/no-data.component';
 
 @Component({
 	selector: 'app-table',
@@ -93,7 +93,7 @@ export class TableComponent<T extends Table.Row> implements OnChanges {
 	}
 
 	protected changedDate(dateRange: PickerDateRange.DateRange): void {
-    if(!dateRange.start && !dateRange.end) {
+		if (!dateRange.start && !dateRange.end) {
 			this.dataSource.connect().next(this.dataSource.filteredData);
 			return;
 		}

@@ -18,16 +18,14 @@ export namespace RouterSelectors {
 	});
 
 	export const getRouterParams = (depth: number): MemoizedSelector<AppState, Params> =>
-		createSelector(
-			getState,
-			(routerState) => {
-        return path(getRouterChildrenProperty(depth, 'params'), routerState) as Params
-      });
-      
+		createSelector(getState, (routerState) => {
+			return path(getRouterChildrenProperty(depth, 'params'), routerState) as Params;
+		});
 
 	export const getRouterConfig = (depth: number): MemoizedSelector<AppState, Route> =>
 		createSelector(
 			getState,
-			(routerState) => path(getRouterChildrenProperty(depth, 'routeConfig'), routerState) as Route
+			(routerState) =>
+				path(getRouterChildrenProperty(depth, 'routeConfig'), routerState) as Route
 		);
 }

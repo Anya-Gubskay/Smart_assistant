@@ -3,7 +3,7 @@ import {status} from 'src/app/shared/constants/common.constats';
 import {Order} from 'src/app/shared/entities/order.entity';
 import {AnalyticsActions} from './actions';
 import {getDataLoaderReducer} from '../store.helper';
-import { AnalyticsPage } from 'src/app/shared/entities/analytics.entity';
+import {AnalyticsPage} from 'src/app/shared/entities/analytics.entity';
 
 export interface AnalyticsState {
 	data: AnalyticsPage.Analytics | null;
@@ -15,7 +15,10 @@ const initialState: AnalyticsState = {
 	dataLoadingStatus: status.default,
 };
 
-export function analyticsReducer(state: AnalyticsState = initialState, action: any): AnalyticsState {
+export function analyticsReducer(
+	state: AnalyticsState = initialState,
+	action: any
+): AnalyticsState {
 	switch (action.type) {
 		case AnalyticsActions.TYPES.GET_DATA.REQUESTED:
 		case AnalyticsActions.TYPES.GET_DATA.SUCCEEDED:
