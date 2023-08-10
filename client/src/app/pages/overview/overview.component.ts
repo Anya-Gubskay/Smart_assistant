@@ -1,10 +1,7 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import * as moment from 'moment';
-import {AnalyticsService} from 'src/app/shared/api/analytics/analytics.service';
 import {CardReviewComponent} from 'src/app/shared/components/card-review/card-review.component';
 import {LoaderComponent} from 'src/app/shared/components/loader/loader/loader.component';
-import {ToastService} from 'src/app/shared/components/toast/toast-service';
-import {ToastComponent} from 'src/app/shared/components/toast/toast.component';
 import {TooltipDirective} from 'src/app/shared/components/tooltip/tooltip/directives/tooltip/tooltip-directive';
 import {
 	TooltipPosition,
@@ -22,7 +19,7 @@ import {SharedModule} from 'src/app/shared/shared.module';
 	templateUrl: './overview.component.html',
 	styleUrls: ['./overview.component.scss'],
 })
-export class OverviewComponent {
+export class OverviewComponent implements OnInit {
 	@Input() data!: OverviewPage.Overview | null;
 	@Input() loadingStatus!: LoadingStatus | null;
 

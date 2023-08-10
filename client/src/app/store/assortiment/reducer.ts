@@ -50,13 +50,14 @@ export function assortimentReducer(
 			);
 		case AssortimentActions.TYPES.ADD_CATEGORY.SUCCEEDED:
 			return set('category', action.payload.data, state);
-		case AssortimentActions.TYPES.DELETE_CATEGORY.SUCCEEDED:
+		case AssortimentActions.TYPES.DELETE_CATEGORY.SUCCEEDED: {
 			const categories = cloneDeep(state.categories);
 			const indexCategory = categories.findIndex(
 				(item) => item._id === action.payload.data.id
 			);
 			categories.splice(indexCategory, 1);
 			return set('categories', categories, state);
+		}
 
 		case AssortimentActions.TYPES.GET_POSITIONS_BY_CATEGORY.REQUESTED:
 		case AssortimentActions.TYPES.GET_POSITIONS_BY_CATEGORY.SUCCEEDED:
@@ -67,22 +68,25 @@ export function assortimentReducer(
 				state,
 				action
 			);
-		case AssortimentActions.TYPES.ADD_POSITION_FOR_CATEGORY.SUCCEEDED:
+		case AssortimentActions.TYPES.ADD_POSITION_FOR_CATEGORY.SUCCEEDED: {
 			const clonePositions = cloneDeep(state.positions);
 			clonePositions.push(action.payload.data);
 			return set('positions', clonePositions, state);
+		}
 
-		case AssortimentActions.TYPES.UPDATE_POSITION_FOR_CATEGORY.SUCCEEDED:
+		case AssortimentActions.TYPES.UPDATE_POSITION_FOR_CATEGORY.SUCCEEDED: {
 			const cloneCategories = cloneDeep(state.positions);
 			const index = cloneCategories.findIndex((item) => item._id === action.payload.data._id);
 			cloneCategories[index] = action.payload.data;
 			return set('positions', cloneCategories, state);
+		}
 
-		case AssortimentActions.TYPES.DELETE_POSITION_FOR_CATEGORY.SUCCEEDED:
+		case AssortimentActions.TYPES.DELETE_POSITION_FOR_CATEGORY.SUCCEEDED: {
 			const positions = cloneDeep(state.positions);
 			const indexPos = positions.findIndex((item) => item._id === action.payload.data.id);
 			positions.splice(indexPos, 1);
 			return set('positions', positions, state);
+		}
 
 		case AssortimentActions.TYPES.CLEAR_MODULE:
 			return JSON.parse(JSON.stringify(initialState)) as AssortimentState;

@@ -4,7 +4,6 @@ import {CommonModule} from '@angular/common';
 import {AppState} from 'src/app/store/rootReducer';
 import {AssortimentActions} from 'src/app/store/assortiment/actions';
 import {AssortimentSelectors} from 'src/app/store/assortiment/selectors';
-import {PagesSelectors} from 'src/app/store/route/selectors-pages';
 import {OrderCategoriesComponent} from './order-categories.component';
 import {OrderActions} from 'src/app/store/order/actions';
 

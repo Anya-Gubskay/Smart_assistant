@@ -1,5 +1,5 @@
 import {CommonModule} from '@angular/common';
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {SharedModule} from '../../shared.module';
 import {map} from 'rxjs';
 import {UntypedFormControl} from '@angular/forms';
@@ -11,7 +11,7 @@ import {UntypedFormControl} from '@angular/forms';
 	templateUrl: './search.component.html',
 	styleUrls: ['./search.component.scss'],
 })
-export class SearchComponent {
+export class SearchComponent implements OnInit, OnChanges {
 	@Input() label!: string;
 	@Input() placeholder!: string;
 	@Input() showSearchIcon = true;
@@ -34,7 +34,7 @@ export class SearchComponent {
 			});
 	}
 
-	ngOnChanges(changes: any): void {
+  ngOnChanges(changes: SimpleChanges): void {
 		if (changes.value) {
 			this.inputControl.setValue(this.value, {emitEvent: false});
 		}

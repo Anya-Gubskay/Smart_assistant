@@ -2,7 +2,6 @@ import {LoadingStatus} from 'src/app/shared/interfaces/common.interface';
 import {status} from 'src/app/shared/constants/common.constats';
 import {OverviewActions} from './actions';
 import {getDataLoaderReducer} from '../store.helper';
-import {AnalyticsPage} from 'src/app/shared/entities/analytics.entity';
 import {OverviewPage} from 'src/app/shared/entities/overview.entity';
 
 export interface OverviewState {

@@ -34,7 +34,7 @@ export class AssortimentEffects {
 				ofType(AssortimentActions.TYPES.INITIAL_CATEGORY_PAGE),
 				withLatestFrom(this.store.select(PagesSelectors.getIsPageNewCategory)),
 				filter(
-					([_, isNewPage]: [AssortimentActions.initialCategoryPage, boolean]) =>
+					([, isNewPage]: [AssortimentActions.initialCategoryPage, boolean]) =>
 						!isNewPage
 				),
 				tap(() => this.store.dispatch(new AssortimentActions.GetCategoryById()))
@@ -49,7 +49,7 @@ export class AssortimentEffects {
 			),
 			debounceTime(DEFAULT_REQUEST_DEBOUNCE_MS),
 			withLatestFrom(this.store.select(RouterParamsSelectors.getSelectedItmeId)),
-			switchMap(([_, id]: [AssortimentActions.GetCategoryById, string]) =>
+			switchMap(([, id]: [AssortimentActions.GetCategoryById, string]) =>
 				this.categoriesApiService
 					.getCategoryById(id)
 					.pipe(
@@ -125,7 +125,7 @@ export class AssortimentEffects {
 			),
 			debounceTime(DEFAULT_REQUEST_DEBOUNCE_MS),
 			withLatestFrom(this.store.select(RouterParamsSelectors.getSelectedItmeId)),
-			switchMap(([_, idCategory]: [AssortimentActions.GetPositionsByCategory, string]) =>
+			switchMap(([, idCategory]: [AssortimentActions.GetPositionsByCategory, string]) =>
 				this.positionsService
 					.getPositionByCategory(idCategory)
 					.pipe(

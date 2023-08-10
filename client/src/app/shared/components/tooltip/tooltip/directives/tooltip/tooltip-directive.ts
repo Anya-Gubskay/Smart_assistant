@@ -1,11 +1,11 @@
 import {
-	ApplicationRef,
 	ChangeDetectorRef,
 	ComponentRef,
 	Directive,
 	ElementRef,
 	HostListener,
 	Input,
+	OnDestroy,
 	ViewContainerRef,
 } from '@angular/core';
 import {TooltipComponent} from './tooltip.component';
@@ -16,7 +16,7 @@ import {TooltipSettings} from './tooltip.interface';
 	selector: '[tooltip]',
 	standalone: true,
 })
-export class TooltipDirective {
+export class TooltipDirective implements OnDestroy {
 	@Input() tooltip: TooltipSettings | null = null;
 
 	private componentRef: ComponentRef<any> | null = null;

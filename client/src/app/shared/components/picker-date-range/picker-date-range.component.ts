@@ -11,7 +11,6 @@ import {UntypedFormBuilder, UntypedFormControl, UntypedFormGroup} from '@angular
 import {SharedModule} from 'src/app/shared/shared.module';
 import {PickerDateRange} from './picker-date-range.entity';
 import {UntilDestroy, untilDestroyed} from '@ngneat/until-destroy';
-import {filter} from 'rxjs';
 
 @UntilDestroy()
 @Component({

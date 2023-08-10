@@ -3,10 +3,7 @@ import {
 	Component,
 	EventEmitter,
 	Input,
-	OnChanges,
-	OnInit,
 	Output,
-	SimpleChanges,
 } from '@angular/core';
 import {Item, LoadingStatus} from '../../interfaces/common.interface';
 import {SharedModule} from '../../shared.module';

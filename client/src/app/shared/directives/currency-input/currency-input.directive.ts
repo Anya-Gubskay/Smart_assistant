@@ -3,6 +3,7 @@ import {CurrencyPipe} from '@angular/common';
 
 @Directive({
 	selector: '[appCurrencyInput]',
+  standalone: true
 })
 export class CurrencyInputDirective implements OnInit {
 	// build the regex based on max pre decimal digits allowed

@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
 import {NavigationExtras, Params, QueryParamsHandling} from '@angular/router';
-import {ActionWithPayload, getActionDescription} from '../store.helper';
+import {getActionDescription} from '../store.helper';
 
 export namespace RouterActions {
 	const moduleName = 'Router';

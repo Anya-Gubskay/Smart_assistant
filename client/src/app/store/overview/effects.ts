@@ -12,7 +12,7 @@ export class OverviewEffects {
 		this.actions$.pipe(
 			ofType<OverviewActions.GetData>(OverviewActions.TYPES.GET_DATA.REQUESTED),
 			debounceTime(DEFAULT_REQUEST_DEBOUNCE_MS),
-			switchMap((_: OverviewActions.GetData) =>
+			switchMap(() =>
 				this.analyticsApiService
 					.getDataOverview()
 					.pipe(

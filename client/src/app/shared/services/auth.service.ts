@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {Login} from '../entities/login.entity';
 import {HttpClient} from '@angular/common/http';
 import {Observable, tap} from 'rxjs';
-import {Token} from '@angular/compiler';
 
 @Injectable({
 	providedIn: 'root',

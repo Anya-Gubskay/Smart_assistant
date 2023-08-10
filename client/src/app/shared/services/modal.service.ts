@@ -5,7 +5,6 @@ import {
 	Inject,
 	Injectable,
 	Injector,
-	TemplateRef,
 	createComponent,
 } from '@angular/core';
 import {Observable, Subject} from 'rxjs';

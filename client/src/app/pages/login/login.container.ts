@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {CommonModule} from '@angular/common';
 import {AppState} from 'src/app/store/rootReducer';
@@ -17,12 +17,10 @@ import {AuthorizationSelectors} from 'src/app/store/authorization/selectors';
 	></app-login>`,
 	styleUrls: ['./login.component.scss'],
 })
-export class LoginContainer implements OnInit {
+export class LoginContainer {
 	$loadingStatus = this.store.select(AuthorizationSelectors.getLoadingStatus);
 
 	constructor(private store: Store<AppState>) {}
-
-	ngOnInit() {}
 
 	public onAuthorisation(auth: {user: Login.User; isFormLogin: boolean}): void {
 		if (auth.isFormLogin) {

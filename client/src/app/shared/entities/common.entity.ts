@@ -9,7 +9,7 @@ export namespace Common {
 	export class Completed {
 		constructor(
 			public message: string,
-			data: any
+			public data: any
 		) {}
 	}
 }

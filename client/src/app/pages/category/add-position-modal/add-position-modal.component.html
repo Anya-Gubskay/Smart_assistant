@@ -9,7 +9,7 @@
 	</mat-form-field>
 	<mat-form-field>
 		<mat-label>Price:</mat-label>
-		<input type="text" formControlName="cost" currencyInput matInput placeholder="Cost" id="cost" />
+		<input type="text" formControlName="cost" appCurrencyInput matInput placeholder="Cost" id="cost" />
 		<mat-error *ngIf="formGroup.controls.cost.hasError('required')"> Price must not be empty </mat-error>
 	</mat-form-field>
   <div class="actions">

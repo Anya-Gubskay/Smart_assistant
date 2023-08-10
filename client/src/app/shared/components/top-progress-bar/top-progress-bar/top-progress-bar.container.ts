@@ -1,4 +1,4 @@
-import {Component, HostBinding} from '@angular/core';
+import {Component, HostBinding, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {AppState} from 'src/app/store/rootReducer';
 import {getIsTopProgressBarVisible} from 'src/app/store/top-progress-bar/selectors';
@@ -8,7 +8,7 @@ import {getIsTopProgressBarVisible} from 'src/app/store/top-progress-bar/selecto
 	template: `<span class="bar"></span>`,
 	styleUrls: ['./top-progress-bar.container.scss'],
 })
-export class TopProgressBarContainer {
+export class TopProgressBarContainer implements OnInit {
 	public isBarVisible!: boolean;
 
 	@HostBinding('style.display') get isVisible(): string {

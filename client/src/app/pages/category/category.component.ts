@@ -93,7 +93,7 @@ export class CategoryComponent implements OnChanges {
 		this.modalService
 			.open<Positions.PositionByCategory>(AddPositionModalComponent, item)
 			.subscribe((action: Positions.PositionByCategory) => {
-				if (action._id) {
+				if (action?._id) {
 					this.updatePosition.emit(
 						new Positions.PositionByCategory(
 							action.name,

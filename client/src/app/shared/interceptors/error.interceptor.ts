@@ -1,7 +1,6 @@
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
-import {AuthService} from '../services/auth.service';
 import {Injectable, inject} from '@angular/core';
-import {Observable, catchError, delay, mergeMap, of, retry, retryWhen, switchMap} from 'rxjs';
+import {Observable, catchError, of, retry} from 'rxjs';
 import {ToastService} from '../components/toast/toast-service';
 import {Toast} from '../components/toast/toast.entities';
 

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {filter, tap} from 'rxjs/operators';
-import {ActivatedRoute, ActivationEnd, NavigationStart, Router} from '@angular/router';
+import {ActivatedRoute, ActivationEnd, Router} from '@angular/router';
 import {RouterActions} from './actions';
 
 @Injectable()
@@ -43,20 +43,9 @@ export class RouterEffects {
 
 	private listenToRouter() {
 		this.router.events.pipe(filter((event) => event instanceof ActivationEnd)).subscribe(() => {
-			this.checkUrlChange();
+			// this.checkUrlChange();
 		});
-
-		this.router.events
-			.pipe(filter((event) => event instanceof NavigationStart))
-			.subscribe((e) => {
-				this.checkPageAccess(e as NavigationStart);
-			});
 	}
 
-	private checkUrlChange(): void {}
-
-	/**
-	 * Currently supports only billing page
-	 */
-	private checkPageAccess(event: NavigationStart): void {}
+	// private checkUrlChange(): void {}
 }

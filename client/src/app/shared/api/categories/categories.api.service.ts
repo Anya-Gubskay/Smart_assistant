@@ -1,10 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable, of} from 'rxjs';
-import {Item, Message} from '../../interfaces/common.interface';
+import {Observable} from 'rxjs';
+import {Message} from '../../interfaces/common.interface';
 import {CategoriesApiModel} from './categories.api.interface';
 import {Categories} from '../../entities/categories.entity';
-import {CategoriesApiMapper} from './categories.api.mapper';
 
 @Injectable({providedIn: 'root'})
 export class CategoriesService {

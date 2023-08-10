@@ -30,7 +30,7 @@ export class AuthorizationEffects {
 				AuthorizationActions.TYPES.REGISTRATION.SUCCEEDED
 			),
 			map(
-				(_: AuthorizationActions.RegistrationCompleted) =>
+				() =>
 					new RouterActions.RouterGo(
 						Routing.AUTH_CHILDREN?.[Routing.KeyUrl.Login].path || '',
 						{
@@ -57,7 +57,7 @@ export class AuthorizationEffects {
 		this.actions$.pipe(
 			ofType<AuthorizationActions.LoginCompleted>(AuthorizationActions.TYPES.LOGIN.SUCCEEDED),
 			map(
-				(_: AuthorizationActions.LoginCompleted) =>
+				() =>
 					new RouterActions.RouterGo(
 						Routing.MAIN_CHILDREN?.[Routing.KeyUrl.Assortiment].path || '',
 						{

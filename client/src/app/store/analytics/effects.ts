@@ -12,7 +12,7 @@ export class AnalyticsEffects {
 		this.actions$.pipe(
 			ofType<AnalyticsActions.GetData>(AnalyticsActions.TYPES.GET_DATA.REQUESTED),
 			debounceTime(DEFAULT_REQUEST_DEBOUNCE_MS),
-			switchMap((_: AnalyticsActions.GetData) =>
+			switchMap(() =>
 				this.analyticsApiService
 					.getDataCharts()
 					.pipe(

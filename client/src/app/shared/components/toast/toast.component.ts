@@ -1,4 +1,4 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {ToastService} from './toast-service';
 import {CommonModule} from '@angular/common';
@@ -29,7 +29,7 @@ import {Toast} from './toast.entities';
 		]),
 	],
 })
-export class ToastComponent {
+export class ToastComponent implements OnInit {
 	@ViewChild('element', {static: false}) progressBar!: ElementRef;
 
 	public readonly settingsToast = Toast.SettingToast;
