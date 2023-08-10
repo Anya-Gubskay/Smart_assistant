@@ -5,7 +5,8 @@
 	<div class="wrapper">
 		<div class="average-price">
 			<h2>
-				Average check: <strong>{{ data?.average ?? 0}} $</strong>
+				Average check:
+				<strong> {{ data?.average ?? 0 | currency: 'USD' : 'symbol' : '1.0-0' }} </strong>
 			</h2>
 		</div>
 		<div class="analytics-block">

@@ -7,21 +7,19 @@ export namespace Table {
 		/**
 		 * Custom predefined components or content
 		 */
-		type?: Table.ColumnsTypes;
+		type?: ColumnsTypes;
 		/**
 		 * Cell label
 		 */
 		title?: string;
 
-    icon?: string;
+		icon?: string;
 		/**
 		 * Is column sortable
 		 */
 		sortable?: boolean;
-		/**
-		 * Sort function for sortable columns
-		 */
-		sortValueOf?: (value: string) => number;
+
+		customFormatter?: (value: any) => string;
 
     onClickButton?: (column: Table.ColumnConfig, row: Table.Row) => void;
     onClickRow?: (column: Table.ColumnConfig, row: Table.Row) => void;
@@ -29,17 +27,17 @@ export namespace Table {
 
 	export enum ColumnsTypes {
 		Checkbox,
-    Input,
+		Input,
 		Weekdays,
 		Weekparts,
 		Button,
-    ButtonIcon,
+		ButtonIcon,
 		Info,
 		Array,
 		ContextMenu,
 	}
 
-  export interface Row {
+	export interface Row {
 		[propName: string]: any;
 	}
 }

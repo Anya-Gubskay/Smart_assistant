@@ -1,6 +1,5 @@
 <ng-container *ngIf="loadingStatus?.loaded; else loader">
-	<div class="container-filters" 		
-  [class.disabled]="!dataSource.data.length">
+	<div class="container-filters" [class.disabled]="!dataSource.data.length">
 		<app-search
 			class="search"
 			*ngIf="isFilter"
@@ -8,7 +7,7 @@
 		></app-search>
 		<app-picker-date-range
 			*ngIf="isDatePicker"
-      [disable]="!dataSource.data.length"
+			[disable]="!dataSource.data.length"
 			(dateChange)="changedDate($event)"
 		></app-picker-date-range>
 	</div>
@@ -49,8 +48,12 @@
 						</ng-container>
 
 						<ng-container *ngSwitchDefault>
-							<mat-cell fxFlex="60px" *matCellDef="let row">
-								{{ row[column.property] }}
+							<mat-cell *matCellDef="let row">
+								{{
+									column.customFormatter
+										? column.customFormatter(row[column.property])
+										: row[column.property]
+								}}
 							</mat-cell>
 						</ng-container>
 					</ng-container>
@@ -64,7 +67,7 @@
 			<mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
 			<mat-row
 				*matRowDef="let row; columns: displayedColumns"
-				(click)="clickRow($event, row)"
+				(click)="clickByRow($event, row)"
 			>
 			</mat-row>
 			<ng-container *ngIf="!dataSource.data.length">

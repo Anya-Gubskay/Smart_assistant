@@ -1,5 +1,5 @@
 import * as moment from 'moment';
-import { Table } from '../components/table/table.namespace';
+import {CurrencyPipe} from '@angular/common';
 
 export namespace Order {
 	export class OrderListItem {
@@ -7,8 +7,8 @@ export namespace Order {
 			public name: string,
 			public quantity: number,
 			public cost: number,
-      public total?: number,
-			public _id?: string,
+			public total?: number,
+			public _id?: string
 		) {}
 	}
 
@@ -17,18 +17,18 @@ export namespace Order {
 		private _time!: string;
 
 		constructor(
-      public total: number,
+			public total: number,
 			public list: OrderListItem[],
-      public _id?: string,
-      public date?: Date,
+			public _id?: string,
+			public date?: Date,
 			public order?: number,
 			public user?: string,
-      public time?: string,
+			public time?: string
 		) {
-      if(date) {
-        this.setDate(date);
-        this.setTime(date);
-      }
+			if (date) {
+				this.setDate(date);
+				this.setTime(date);
+			}
 		}
 
 		getDate(): string {
@@ -48,13 +48,16 @@ export namespace Order {
 		}
 	}
 
-  type callbackFnc = (column: Table.ColumnConfig, row: Table.Row) => void;
-
-  export const  configTable =  [
+	export const configTable = (currencyPipe: CurrencyPipe) => [
 		{property: 'order', title: '№', sortable: true},
 		{property: '_date', title: 'Date', sortable: true},
 		{property: '_time', title: 'Time', sortable: true},
-		{property: 'total', title: 'Price', sortable: true}
+		{
+			property: 'total',
+			title: 'Total',
+			sortable: true,
+			customFormatter: (value: number) =>
+				currencyPipe.transform(value, 'USD', 'symbol', '1.0-0') as string,
+		},
 	];
 }
-  

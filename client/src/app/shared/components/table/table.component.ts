@@ -32,7 +32,7 @@ import { AppNoDataComponent } from '../no-data/no-data.component';
 		SearchComponent,
 		LoaderComponent,
 		PickerDateRangeComponent,
-    AppNoDataComponent,
+		AppNoDataComponent,
 	],
 	templateUrl: './table.component.html',
 	styleUrls: ['./table.component.scss'],
@@ -42,10 +42,10 @@ export class TableComponent<T extends Table.Row> implements OnChanges {
 	@Input() data!: T[] | null;
 	@Input() isFilter = true;
 	@Input() isPagination = false;
-  @Input() isDatePicker = false;
+	@Input() isDatePicker = false;
 	@Input() title = '';
 	@Input() loadingStatus!: LoadingStatus | null;
-	@Output() onClickRow = new EventEmitter<T>();
+	@Output() clickRow = new EventEmitter<T>();
 
 	public displayedColumns: string[] = [];
 	public dataSource!: MatTableDataSource<T>;
@@ -78,10 +78,10 @@ export class TableComponent<T extends Table.Row> implements OnChanges {
 		this.dataSource.filter = filterValue.trim().toLowerCase();
 	}
 
-	protected clickRow($event: MouseEvent, row: T): void {
+	protected clickByRow($event: MouseEvent, row: T): void {
 		$event.preventDefault();
 		$event.stopPropagation();
-		this.onClickRow.emit(row);
+		this.clickRow.emit(row);
 	}
 
 	protected clickButton($event: MouseEvent, column: Table.ColumnConfig, row: Table.Row): void {
@@ -94,14 +94,14 @@ export class TableComponent<T extends Table.Row> implements OnChanges {
 
 	protected changedDate(dateRange: PickerDateRange.DateRange): void {
     if(!dateRange.start && !dateRange.end) {
-      this.dataSource.connect().next(this.dataSource.filteredData);
-      return;
-    }
+			this.dataSource.connect().next(this.dataSource.filteredData);
+			return;
+		}
 		const newDate = this.dataSource.filteredData.filter((e) => {
 			return (
-				  moment(e.date).format(DEFAULT_FORMAT_DATE) >=
+				moment(e.date).format(DEFAULT_FORMAT_DATE) >=
 					moment(dateRange.start).format(DEFAULT_FORMAT_DATE) &&
-				  moment(e.date).format(DEFAULT_FORMAT_DATE) <=
+				moment(e.date).format(DEFAULT_FORMAT_DATE) <=
 					moment(dateRange.end).format(DEFAULT_FORMAT_DATE)
 			);
 		});

@@ -1,4 +1,4 @@
-import {CommonModule} from '@angular/common';
+import {CommonModule, CurrencyPipe} from '@angular/common';
 import {Component, Input, OnDestroy} from '@angular/core';
 import {TableComponent} from 'src/app/shared/components/table/table.component';
 import {Table} from 'src/app/shared/components/table/table.namespace';
@@ -20,11 +20,12 @@ export class HistoryComponent implements OnDestroy {
 	@Input() orders!: Order.OrderByCategory[] | null;
 	@Input() loadingStatus!: LoadingStatus | null;
 
-	public readonly COLUMNS_CONFIG: Table.ColumnConfig[] = Order.configTable;
+	public readonly COLUMNS_CONFIG: Table.ColumnConfig[] = Order.configTable(this.currencyPipe);
 
 	constructor(
 		protected modalService: ModalService,
-		public order: OrderService
+		public order: OrderService,
+    private currencyPipe: CurrencyPipe
 	) {}
 
 	public onClickRow(row: Order.OrderByCategory): void {

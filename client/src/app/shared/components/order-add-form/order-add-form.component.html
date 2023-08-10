@@ -13,8 +13,8 @@
 			<tbody>
 				<tr *ngFor="let item of order.list; trackBy: trackByFn">
 					<td>{{ item.name }}</td>
-					<td>{{ item.cost }} $</td>
-					<td>{{ item.total }} $</td>
+					<td>{{ item.cost | currency : 'USD' : 'symbol' : '1.0-0'}} </td>
+					<td>{{ item.total | currency : 'USD' : 'symbol' : '1.0-0'}} </td>
 					<td>
 						<div>
 							<mat-form-field
@@ -24,8 +24,8 @@
 							>
 								<input
 									matInput
-									type="number"
 									min="0"
+                  currencyInput
 									[(ngModel)]="item.quantity"
 									(input)="order.count(item)"
 								/>
@@ -40,7 +40,7 @@
 		</table>
 		<div class="actions">
 			<h2 class="center">
-				Total cost: <strong>{{ order.price }} $</strong>
+				Total cost: <strong>{{ order.price | currency : 'USD' : 'symbol' : '1.0-0'}}</strong>
 			</h2>
 			<button
 				*ngIf="isEdit"
@@ -49,7 +49,7 @@
 				[disabled]="order.price === 0"
 				(click)="order.resetOrder()"
 			>
-				Reset Order
+				Reset order
 			</button>
 		</div>
 	</ng-container>

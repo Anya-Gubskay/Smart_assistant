@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {AuthorizationActions} from '../authorization/actions';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
-import {map, tap} from 'rxjs';
+import {tap} from 'rxjs';
 import {Common} from 'src/app/shared/entities/common.entity';
 import {ToastService} from 'src/app/shared/components/toast/toast-service';
 import {Toast} from 'src/app/shared/components/toast/toast.entities';
