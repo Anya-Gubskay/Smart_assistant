@@ -31,16 +31,6 @@ module.exports.remove = async function (req, res) {
       message: "Сategory has been removed",
       data: { id: req.params.id },
     });
-
-    let from = req.params.imageSrc.search("uploads");
-    let to = req.params.imageSrc.length;
-    const nameImage = req.params.imageSrc.substring(from, to);
-    try {
-      fs.unlinkSync(`../../../../../${nameImage}`);
-      console.log("Successfully deleted the file.");
-    } catch (err) {
-      console.log(err);
-    }
   } catch (e) {
     errorHandler(res, e);
   }
