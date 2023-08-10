@@ -24,6 +24,7 @@
 ### Database
   MongoDb
 <hr>
-<p> You won't be able to view it locally, since the database is not available to you, sorry =)</p>
-<p> This app is for portfolio. I plan to expand it in the future.</p>
+<strong>You won't be able to view it locally, since the database is not available to you, sorry =)</strong><br>
+<strong>Mail is not connected in any way yet, so you can register any main thing so that the format matches!</strong><br>
+<strong>This app is for portfolio. I plan to expand it in the future.</strong>
 
