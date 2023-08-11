@@ -4,7 +4,7 @@
 <h3 align="center">Angular Frontend Developer</h3>
 <div>This is my first fullstack application. It will help you in the vision of commercial sales!</div>
 
-<a>https://smart-assistant-8c120.firebaseapp.com</a>
+<a>https://smart-assistant-8c120.web.app</a>
 
 ## Account ready for visual review:
   email:
