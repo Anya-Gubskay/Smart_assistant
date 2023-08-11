@@ -9,7 +9,7 @@
     "gui-install": "npm install --prefix client",
     "gui": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run client-install && npm run build --prefix client"
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "concurrently": "~8.2.0",
-    "nodemon": "~3.0.1"
+    "nodemon": "~3.0.1",
+    "husky": "~8.0.3"
   }
 }

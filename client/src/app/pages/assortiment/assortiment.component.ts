@@ -1,7 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Router} from '@angular/router';
-import {DialogComponent} from 'src/app/shared/components/dialog/dialog.component';
 import {ModalComponent} from 'src/app/shared/components/modal/modal.component';
 import {TodoListComponent} from 'src/app/shared/components/todo-list/todo-list.component';
 import {Routing} from 'src/app/shared/entities/routing.entity';

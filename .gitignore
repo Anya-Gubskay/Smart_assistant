@@ -8,3 +8,4 @@ client/etc/
 .firebaserc
 .firebase/*
 firebase.json
+package-lock.json

@@ -3,7 +3,10 @@ import {
 	Component,
 	EventEmitter,
 	Input,
+	OnChanges,
+	OnInit,
 	Output,
+	SimpleChanges,
 } from '@angular/core';
 import {Item, LoadingStatus} from '../../interfaces/common.interface';
 import {SharedModule} from '../../shared.module';
@@ -62,15 +65,17 @@ export class TodoListComponent<T extends Item> {
 		event.stopPropagation();
 		const target = event.target as HTMLElement;
 		const activeIconId = target.getAttribute('data-icon-id');
-		const activeId = target.getAttribute('data-id');
-		if (activeId) {
-			this.clickItem.emit(this.items?.find((e) => e._id === activeId));
-			return;
-		}
 
 		if (activeIconId) {
 			this.clickIcon.emit(this.items?.find((e) => e._id === activeIconId));
 			return;
+		}
+
+		const activeId =
+			target.getAttribute('data-id') || target.parentElement?.getAttribute('data-id');
+
+		if (activeId) {
+			this.clickItem.emit(this.items?.find((e) => e._id === activeId));
 		}
 	}
 }
