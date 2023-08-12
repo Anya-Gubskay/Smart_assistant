@@ -5,16 +5,38 @@
 	<mat-form-field [formGroup]="formGroup">
 		<mat-label>Name:</mat-label>
 		<input type="text" formControlName="name" matInput placeholder="Name" id="name" />
-		<mat-error *ngIf="formGroup.controls.name.hasError('required')"> Name category must not be empty </mat-error>
+		<mat-error *ngIf="formGroup.controls.name.hasError('required')">
+			Name category must not be empty
+		</mat-error>
 	</mat-form-field>
 	<mat-form-field>
 		<mat-label>Price:</mat-label>
-		<input type="text" formControlName="cost" appCurrencyInput matInput placeholder="Cost" id="cost" />
-		<mat-error *ngIf="formGroup.controls.cost.hasError('required')"> Price must not be empty </mat-error>
+		<input
+			type="text"
+			formControlName="cost"
+			appCurrencyInput
+			matInput
+			placeholder="Cost"
+			id="cost"
+		/>
+		<mat-error *ngIf="formGroup.controls.cost.hasError('required')">
+			Price must not be empty
+		</mat-error>
 	</mat-form-field>
-  <div class="actions">
-    <button mat-flat-button (click)="modalService.closeModal()">Cancel</button>
-    <button mat-raised-button type="submit" color="primary" [disabled]="formGroup.invalid || formGroup.disabled">Save</button>
-  </div>
+	<div class="actions">
+		<button mat-flat-button (click)="modalService.closeModal()">Cancel</button>
+		<button
+			mat-raised-button
+			type="submit"
+			color="primary"
+			[disabled]="
+				formGroup.invalid ||
+				formGroup.disabled ||
+				(data?.name === formGroup.controls.name.value &&
+					data?.cost === formGroup.controls.cost.value)
+			"
+		>
+			Save
+		</button>
+	</div>
 </form>
-

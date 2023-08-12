@@ -7,5 +7,5 @@ class="wrapper-list"
 	[items]="categories"
 	[loadingStatus]="loadingStatus"
 	(clickItem)="onClickItem($event)"
-	(clickIcon)="removeCategory.emit($event)"
+	(clickAction)="removeCategory.emit($event)"
 ></app-todo-list>

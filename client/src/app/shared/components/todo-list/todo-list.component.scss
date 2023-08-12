@@ -14,20 +14,22 @@
 		@include flex-centered;
 	}
 
-	.title, .icon {
+	.title {
 		color: var(--content-active);
 	}
 
-	.icon {
+	.btn-delete {
 		transition: var(--app-transition);
 
 		&:hover {
-			color: var(--black);
+			background: var(--error);
+			color: var(--white);
 		}
 	}
 
 	.list-item {
 		@include flex-space-between;
+		align-items: center;
 		border: var(--third) solid 2px;
 		border-radius: var(--border-radius);
 		color: var(--content-primary);

@@ -17,7 +17,7 @@ export class ModalComponent {
 
 	protected clickWrapper($event: MouseEvent): void {
 		if (($event.target as HTMLElement).className === 'wrapper-dialog') {
-			this.modalService.submitModal();
+			this.modalService.closeModal();
 		}
 	}
 }

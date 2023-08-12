@@ -47,35 +47,23 @@ import {AppNoDataComponent} from '../no-data/no-data.component';
 export class TodoListComponent<T extends Item> {
 	@Input() items!: T[] | null;
 	@Input() loadingStatus!: LoadingStatus | null;
-	@Input() tooltipSettings: TooltipSettings = {
-		position: TooltipPosition.LEFT,
-		theme: TooltipTheme.DARK,
-		title: `Delete category`,
-	};
+
 	public searchQuery = '';
 
 	@Output() clickItem = new EventEmitter<T>();
-	@Output() clickIcon = new EventEmitter<T>();
+	@Output() clickAction = new EventEmitter<T>();
 
 	public trackByFn(index: number, item: T): string | number {
 		return item._id;
 	}
 
-	public containerClick(event: MouseEvent): void {
+	public deleteRow(event: MouseEvent, item: T): void {
 		event.stopPropagation();
-		const target = event.target as HTMLElement;
-		const activeIconId = target.getAttribute('data-icon-id');
+		this.clickAction.emit(item);
+	}
 
-		if (activeIconId) {
-			this.clickIcon.emit(this.items?.find((e) => e._id === activeIconId));
-			return;
-		}
-
-		const activeId =
-			target.getAttribute('data-id') || target.parentElement?.getAttribute('data-id');
-
-		if (activeId) {
-			this.clickItem.emit(this.items?.find((e) => e._id === activeId));
-		}
+	public clickRow(event: MouseEvent, item: T): void {
+		event.stopPropagation();
+		this.clickItem.emit(item);
 	}
 }

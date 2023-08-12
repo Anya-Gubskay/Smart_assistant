@@ -96,8 +96,8 @@ export class CategoryComponent implements OnChanges {
 				if (action?._id) {
 					this.updatePosition.emit(
 						new Positions.PositionByCategory(
-							action.name,
-							action.cost,
+							action?.name,
+							action?.cost,
 							action._id,
 							1,
 							this.category?._id
@@ -107,8 +107,8 @@ export class CategoryComponent implements OnChanges {
 				}
 				this.addPosition.emit(
 					new Positions.PositionByCategory(
-						action.name,
-						action.cost,
+						action?.name,
+						action?.cost,
 						'',
 						1,
 						this.category?._id

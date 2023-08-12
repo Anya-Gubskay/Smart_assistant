@@ -48,7 +48,7 @@
 		[items]="positions"
 		[loadingStatus]="positionsLoadingStatus"
 		(clickItem)="onClickItem($event)"
-		(clickIcon)="deletePosition.emit($event)"
+		(clickAction)="deletePosition.emit($event)"
 	></app-todo-list>
 </ng-container>
 <ng-template #loader>

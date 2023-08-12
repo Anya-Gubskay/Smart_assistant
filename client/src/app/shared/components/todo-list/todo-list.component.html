@@ -1,28 +1,31 @@
 <ng-container *ngIf="!loadingStatus?.loading; else loader">
 	<app-search [class.disabled]="!items?.length" [(value)]="searchQuery"></app-search>
-	<div
-		class="container-list"
-		[ngClass]="{'container-empty': !items?.length}"
-		(click)="containerClick($event)"
-	>
+	<div class="container-list" [ngClass]="{'container-empty': !items?.length}">
 		<ng-container *ngIf="items?.length; else empty">
 			<div
 				[@fadeAnimation]="'in'"
 				*ngFor="let item of items | filterItemsByString: searchQuery; trackBy: trackByFn"
 				[attr.data-id]="item._id"
 				class="list-item pointer"
+				(click)="clickRow($event, item)"
 			>
 				<span class="title">{{ item.name }}</span>
-				<mat-icon class="icon" [attr.data-icon-id]="item._id" [tooltip]="tooltipSettings"
-					>remove_shopping_cart</mat-icon
+				<button
+					class="btn-delete"
+					mat-stroked-button
+					color="primary"
+					(click)="deleteRow($event, item)"
 				>
+					<mat-icon>remove_shopping_cart</mat-icon>
+					Delete
+				</button>
 			</div>
 		</ng-container>
 	</div>
 </ng-container>
 
 <ng-template #empty>
-  <app-no-data></app-no-data>
+	<app-no-data></app-no-data>
 </ng-template>
 
 <ng-template #loader>
