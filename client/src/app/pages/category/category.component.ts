@@ -1,5 +1,14 @@
 import {CommonModule} from '@angular/common';
-import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
+import {
+	ChangeDetectionStrategy,
+	ChangeDetectorRef,
+	Component,
+	EventEmitter,
+	Input,
+	OnChanges,
+	Output,
+	SimpleChanges,
+} from '@angular/core';
 import {FormGroup, UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
 import {TodoListComponent} from 'src/app/shared/components/todo-list/todo-list.component';
 import {LoadingStatus} from 'src/app/shared/interfaces/common.interface';
@@ -17,6 +26,7 @@ import {RouterModule} from '@angular/router';
 	imports: [CommonModule, SharedModule, TodoListComponent, RouterModule, LoaderComponent],
 	templateUrl: './category.component.html',
 	styleUrls: ['./category.component.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CategoryComponent implements OnChanges {
 	@Input() positions!: Positions.PositionByCategory[] | null;
@@ -34,7 +44,10 @@ export class CategoryComponent implements OnChanges {
 	@Output() updatePosition = new EventEmitter<Positions.PositionByCategory>();
 	@Output() deletePosition = new EventEmitter<Positions.PositionByCategory>();
 
-	constructor(protected modalService: ModalService) {}
+	constructor(
+		protected modalService: ModalService,
+		private cd: ChangeDetectorRef
+	) {}
 
 	ngOnChanges(changes: SimpleChanges): void {
 		if (!this.formGroup) {
@@ -67,7 +80,7 @@ export class CategoryComponent implements OnChanges {
 		}
 	}
 
-	public saveChange(): void {
+	protected saveChange(): void {
 		if (!this.category?._id) {
 			this.addCategory.emit(
 				new Categories.Category(this.formGroup.value.name, '', this.image)
@@ -85,11 +98,11 @@ export class CategoryComponent implements OnChanges {
 		});
 	}
 
-	public onClickItem(item: Positions.PositionByCategory): void {
+	protected onClickItem(item: Positions.PositionByCategory): void {
 		this.openModal(item);
 	}
 
-	public openModal(item?: Positions.PositionByCategory): void {
+	protected openModal(item?: Positions.PositionByCategory): void {
 		this.modalService
 			.open<Positions.PositionByCategory>(AddPositionModalComponent, item)
 			.subscribe((action: Positions.PositionByCategory) => {
@@ -117,16 +130,19 @@ export class CategoryComponent implements OnChanges {
 			});
 	}
 
-	public onFileSelect(event: Event): void {
-		const file = (event.target as any).files[0];
-		this.image = file;
+	protected onFileSelect(event: Event): void {
+		const file = (event.target as unknown as {files: Array<File>}).files[0];
 
-		const reader = new FileReader();
+		if (file) {
+			this.image = file;
+			const reader = new FileReader();
 
-		reader.onload = () => {
-			this.imagePreview = reader.result as string;
-		};
+			reader.onload = (): void => {
+				this.imagePreview = reader.result as string;
+				this.cd.detectChanges();
+			};
 
-		reader.readAsDataURL(file);
+			reader.readAsDataURL(file);
+		}
 	}
 }

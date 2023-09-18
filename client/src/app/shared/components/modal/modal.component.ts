@@ -1,5 +1,5 @@
 import {CommonModule} from '@angular/common';
-import {Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {ModalService} from '../../services/modal.service';
 
 @Component({
@@ -8,6 +8,7 @@ import {ModalService} from '../../services/modal.service';
 	imports: [CommonModule],
 	templateUrl: './modal.component.html',
 	styleUrls: ['./modal.component.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ModalComponent {
 	@Input() width!: string;

@@ -22,7 +22,7 @@ export namespace OverviewPage {
 
 	export const ConfigRevenue: Config = {
 		title: 'Revenue',
-		unit: '',
+		unit: '$',
 		description: 'Your business revenue today',
 		color: COLOR.revenue,
 	};

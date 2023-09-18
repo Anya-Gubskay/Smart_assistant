@@ -1,5 +1,5 @@
 import {CommonModule} from '@angular/common';
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {OrderService} from 'src/app/pages/order/order.service';
 import {LoaderComponent} from 'src/app/shared/components/loader/loader/loader.component';
 import {Order} from 'src/app/shared/entities/order.entity';
@@ -13,6 +13,7 @@ import {AppNoDataComponent} from '../no-data/no-data.component';
 	imports: [CommonModule, SharedModule, LoaderComponent, AppNoDataComponent],
 	templateUrl: './order-add-form.component.html',
 	styleUrls: ['./order-add-form.component.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OrderAddFormComponent {
 	@Input() loadingStatus!: LoadingStatus | null;

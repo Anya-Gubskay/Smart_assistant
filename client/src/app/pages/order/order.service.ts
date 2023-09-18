@@ -21,6 +21,7 @@ export class OrderService {
 	}
 
 	public clear(): void {
+		this.oldList = {};
 		this.list = [];
 		this.price = 0;
 	}

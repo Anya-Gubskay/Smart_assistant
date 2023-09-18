@@ -1,4 +1,4 @@
-import {getDataLoaderReducer} from '../store.helper';
+import {ActionWithPayload, getDataLoaderReducer} from '../store.helper';
 import {LoadingStatus} from 'src/app/shared/interfaces/common.interface';
 import {AuthorizationActions} from './actions';
 import {status} from 'src/app/shared/constants/common.constats';
@@ -16,8 +16,8 @@ const initialState: AuthorizationState = {
 const TYPES = AuthorizationActions.TYPES;
 
 export function authorizationReducer(
-	state: AuthorizationState = initialState,
-	action: any
+	state = initialState,
+	action: ActionWithPayload<unknown>
 ): AuthorizationState {
 	switch (action.type) {
 		case TYPES.REGISTRATION.REQUESTED:

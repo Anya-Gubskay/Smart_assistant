@@ -1,5 +1,5 @@
 import {CommonModule} from '@angular/common';
-import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {Chart, ChartModule} from 'angular-highcharts';
 import {LoaderComponent} from 'src/app/shared/components/loader/loader/loader.component';
 import {AnalyticsPage} from 'src/app/shared/entities/analytics.entity';
@@ -12,6 +12,7 @@ import {AnalyticsChart} from './analytics-chart.namespace';
 	imports: [CommonModule, ChartModule, LoaderComponent],
 	templateUrl: './analytics.component.html',
 	styleUrls: ['./analytics.component.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AnalyticsComponent implements OnChanges {
 	@Input() data!: AnalyticsPage.Analytics | null;

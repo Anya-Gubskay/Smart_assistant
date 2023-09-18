@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {CommonModule} from '@angular/common';
 import {AppState} from 'src/app/store/rootReducer';
@@ -16,10 +16,13 @@ import {OrderActions} from 'src/app/store/order/actions';
 		[loadingStatus]="categoriesLoadingStatus$ | async"
 	>
 	</app-order-categories>`,
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OrderCategoriesContainer implements OnInit, OnDestroy {
-	categories$ = this.store.select(AssortimentSelectors.getCategories);
-	categoriesLoadingStatus$ = this.store.select(AssortimentSelectors.getCategoriesLoadingStatus);
+	public categories$ = this.store.select(AssortimentSelectors.getCategories);
+	public categoriesLoadingStatus$ = this.store.select(
+		AssortimentSelectors.getCategoriesLoadingStatus
+	);
 
 	constructor(private store: Store<AppState>) {}
 

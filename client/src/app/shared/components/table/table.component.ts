@@ -1,5 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {
+	ChangeDetectionStrategy,
 	Component,
 	EventEmitter,
 	Input,
@@ -36,6 +37,7 @@ import {AppNoDataComponent} from '../no-data/no-data.component';
 	],
 	templateUrl: './table.component.html',
 	styleUrls: ['./table.component.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableComponent<T extends Table.Row> implements OnChanges {
 	@Input() columnsConfig!: Table.ColumnConfig[];

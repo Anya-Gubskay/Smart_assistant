@@ -2,7 +2,7 @@
 
 :host {
 	.container-list {
-		max-height: calc(100% - 2*var(--padding-l) - 1rem);
+		max-height: calc(100% - 2*var(--padding-l) - var(--margin-s));
 		overflow: auto;
 	}
 

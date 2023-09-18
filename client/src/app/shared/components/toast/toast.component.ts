@@ -1,4 +1,11 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {
+	ChangeDetectionStrategy,
+	ChangeDetectorRef,
+	Component,
+	ElementRef,
+	OnInit,
+	ViewChild,
+} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {ToastService} from './toast-service';
 import {CommonModule} from '@angular/common';
@@ -17,17 +24,20 @@ import {Toast} from './toast.entities';
 				'open',
 				style({
 					opacity: 1,
+					zIndex: 100,
 				})
 			),
 			state(
 				'closed',
 				style({
 					opacity: 0,
+					zIndex: 0,
 				})
 			),
 			transition('open <=> closed', [animate('.5s linear')]),
 		]),
 	],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToastComponent implements OnInit {
 	@ViewChild('element', {static: false}) progressBar!: ElementRef;
@@ -37,7 +47,10 @@ export class ToastComponent implements OnInit {
 	public readonly toastTypes = Toast.ToastTypes;
 	private progressInterval!: any;
 
-	constructor(public toastService: ToastService) {}
+	constructor(
+		public toastService: ToastService,
+		private cd: ChangeDetectorRef
+	) {}
 
 	ngOnInit(): void {
 		this.toastService.open.subscribe((data) => {
@@ -66,6 +79,7 @@ export class ToastComponent implements OnInit {
 				this.progressBar.nativeElement.style.width =
 					this.toastService.data.progressWidth + '%';
 			}, 100);
+			this.cd.markForCheck();
 		}
 	}
 
@@ -75,5 +89,6 @@ export class ToastComponent implements OnInit {
 
 	public hideToast(): void {
 		this.toastService.hide();
+		this.cd.markForCheck();
 	}
 }

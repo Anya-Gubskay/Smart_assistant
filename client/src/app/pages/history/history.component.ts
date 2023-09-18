@@ -1,5 +1,5 @@
 import {CommonModule, CurrencyPipe} from '@angular/common';
-import {Component, Input, OnDestroy} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnDestroy} from '@angular/core';
 import {TableComponent} from 'src/app/shared/components/table/table.component';
 import {Table} from 'src/app/shared/components/table/table.namespace';
 import {Order} from 'src/app/shared/entities/order.entity';
@@ -15,6 +15,7 @@ import {Common} from 'src/app/shared/entities/common.entity';
 	imports: [CommonModule, TableComponent],
 	templateUrl: './history.component.html',
 	styleUrls: ['./history.component.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HistoryComponent implements OnDestroy {
 	@Input() orders!: Order.OrderByCategory[] | null;

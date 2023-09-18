@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import * as moment from 'moment';
 import {CardReviewComponent} from 'src/app/shared/components/card-review/card-review.component';
 import {LoaderComponent} from 'src/app/shared/components/loader/loader/loader.component';
@@ -18,6 +18,7 @@ import {SharedModule} from 'src/app/shared/shared.module';
 	imports: [CardReviewComponent, SharedModule, TooltipDirective, LoaderComponent],
 	templateUrl: './overview.component.html',
 	styleUrls: ['./overview.component.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OverviewComponent implements OnInit {
 	@Input() data!: OverviewPage.Overview | null;

@@ -12,7 +12,7 @@ export class OrderEffects {
 		this.actions$.pipe(
 			ofType<OrderActions.GetOrder>(OrderActions.TYPES.GET_ORDER.REQUESTED),
 			debounceTime(DEFAULT_REQUEST_DEBOUNCE_MS),
-			switchMap((_: OrderActions.GetOrder) =>
+			switchMap(() =>
 				this.ordersApiService
 					.getOrders()
 					.pipe(

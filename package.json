@@ -8,7 +8,7 @@
     "server": "nodemon index.js",
     "gui-install": "npm install --prefix client",
     "gui": "npm run start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "dev": "concurrently \"npm run server\" \"npm run gui\"",
     "prepare": "husky install"
   },
   "repository": {

@@ -1,4 +1,12 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {
+	ChangeDetectionStrategy,
+	ChangeDetectorRef,
+	Component,
+	EventEmitter,
+	Input,
+	OnInit,
+	Output,
+} from '@angular/core';
 import {
 	FormsModule,
 	ReactiveFormsModule,
@@ -21,6 +29,7 @@ import {SharedModule} from 'src/app/shared/shared.module';
 	imports: [SharedModule, ReactiveFormsModule, FormsModule, LoaderComponent],
 	templateUrl: './login.component.html',
 	styleUrls: ['./login.component.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent implements OnInit {
 	@Input() loadingStatus!: LoadingStatus | null;

@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
 import {AssortimentComponent} from './assortiment.component';
 import {Store} from '@ngrx/store';
 import {AssortimentSelectors} from 'src/app/store/assortiment/selectors';
@@ -16,6 +16,7 @@ import {Categories} from 'src/app/shared/entities/categories.entity';
 		[loadingStatus]="loadingStatus$ | async"
 		(removeCategory)="onRemoveCategory($event)"
 	></app-assortiment>`,
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AssortimentContainer implements OnInit, OnDestroy {
 	public categories$ = this.store.select(AssortimentSelectors.getCategories);

@@ -1,7 +1,4 @@
-import {
-	ActionWithPayload,
-	getModuleDataLoadingActionsCreator,
-} from '../store.helper';
+import {ActionWithPayload, getModuleDataLoadingActionsCreator} from '../store.helper';
 import {Login} from '../../shared/entities/login.entity';
 import {Action} from '@ngrx/store';
 export namespace AuthorizationActions {

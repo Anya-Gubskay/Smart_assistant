@@ -1,5 +1,5 @@
-import * as Highcharts from 'highcharts';
-import {Options, Point} from 'highcharts';
+import {Point} from 'angular-highcharts/lib/chart';
+import {Highcharts} from 'highcharts/modules/map';
 import {COLOR} from 'src/app/shared/constants/common.constats';
 import {AnalyticsPage} from 'src/app/shared/entities/analytics.entity';
 
@@ -40,13 +40,14 @@ export namespace AnalyticsChart {
 			this.series.name === 'Revenue'
 				? `$${Highcharts.numberFormat(this.y as number, 0)}`
 				: this.y;
-		return `<span style="color:${this.color}">● </span>${this.series.name}: <b>${value}</b><br/>`;
+		return `
+    <span style="color:${this.color}">● </span>${this.series.name}: <b>${value}</b><br/>`;
 	}
 
 	export function getChartOptions(
 		data: AnalyticsPage.AnalyticsChart[] = [],
 		config: Config
-	): Options {
+	): any {
 		return {
 			chart: {
 				type: 'spline',
@@ -69,7 +70,10 @@ export namespace AnalyticsChart {
 				},
 				labels: {
 					formatter: function (): string {
-						return getFormatDateAndLabel(this.value as number, config);
+						return getFormatDateAndLabel(
+							(this as {formatter: () => string; value: number}).value,
+							config
+						);
 					},
 				},
 			},
@@ -87,7 +91,10 @@ export namespace AnalyticsChart {
 					dataLabels: {
 						enabled: true,
 						formatter: function (): string {
-							return getFormatDateAndLabel(this.y as number, config);
+							return getFormatDateAndLabel(
+								(this as {enabled: boolean; formatter: () => string; y: number}).y,
+								config
+							);
 						},
 					},
 				},

@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {CommonModule} from '@angular/common';
 import {AppState} from 'src/app/store/rootReducer';
@@ -26,13 +26,16 @@ import {Positions} from 'src/app/shared/entities/positions.entity';
 		(deletePosition)="onDeletePosition($event)"
 	>
 	</app-category>`,
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CategoryContainer implements OnInit, OnDestroy {
-	isNewCategoryPage$ = this.store.select(PagesSelectors.getIsPageNewCategory);
-	category$ = this.store.select(AssortimentSelectors.getCategory);
-	loadingStatus$ = this.store.select(AssortimentSelectors.getCategoryLoadingStatus);
-	positions$ = this.store.select(AssortimentSelectors.getPositions);
-	positionsloadingStatus$ = this.store.select(AssortimentSelectors.getPositionsLoadingStatus);
+	public isNewCategoryPage$ = this.store.select(PagesSelectors.getIsPageNewCategory);
+	public category$ = this.store.select(AssortimentSelectors.getCategory);
+	public loadingStatus$ = this.store.select(AssortimentSelectors.getCategoryLoadingStatus);
+	public positions$ = this.store.select(AssortimentSelectors.getPositions);
+	public positionsloadingStatus$ = this.store.select(
+		AssortimentSelectors.getPositionsLoadingStatus
+	);
 
 	constructor(private store: Store<AppState>) {}
 

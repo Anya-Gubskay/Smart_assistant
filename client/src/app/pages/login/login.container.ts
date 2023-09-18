@@ -6,6 +6,7 @@ import {AuthorizationActions} from 'src/app/store/authorization/actions';
 import {Login} from 'src/app/shared/entities/login.entity';
 import {LoginComponent} from './login.component';
 import {AuthorizationSelectors} from 'src/app/store/authorization/selectors';
+import {ChangeDetectionStrategy} from '@angular/core';
 
 @Component({
 	selector: 'app-login-container',
@@ -16,9 +17,10 @@ import {AuthorizationSelectors} from 'src/app/store/authorization/selectors';
 		(authorization)="onAuthorisation($event)"
 	></app-login>`,
 	styleUrls: ['./login.component.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginContainer {
-	$loadingStatus = this.store.select(AuthorizationSelectors.getLoadingStatus);
+	public $loadingStatus = this.store.select(AuthorizationSelectors.getLoadingStatus);
 
 	constructor(private store: Store<AppState>) {}
 

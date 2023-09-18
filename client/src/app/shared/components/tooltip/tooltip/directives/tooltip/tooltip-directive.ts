@@ -13,11 +13,11 @@ import {TooltipPosition} from './tooltip.enum';
 import {TooltipSettings} from './tooltip.interface';
 
 @Directive({
-	selector: '[tooltip]',
+	selector: '[appTooltip]',
 	standalone: true,
 })
 export class TooltipDirective implements OnDestroy {
-	@Input() tooltip: TooltipSettings | null = null;
+	@Input() appTooltip: TooltipSettings | null = null;
 
 	private componentRef: ComponentRef<any> | null = null;
 	private showTimeout?: number;
@@ -39,27 +39,30 @@ export class TooltipDirective implements OnDestroy {
 		this.setHideTooltipTimeout();
 	}
 
-	private initializeTooltip() {
+	private initializeTooltip(): void {
 		if (this.componentRef === null) {
-			window.clearInterval(this.tooltip?.hideDelay);
+			window.clearInterval(this.appTooltip?.hideDelay);
 
 			this.componentRef = this.viewContainerRef.createComponent(TooltipComponent);
 			this.setTooltipComponentProperties();
 
-			this.showTimeout = window.setTimeout(() => this.showTooltip(), this.tooltip?.showDelay);
+			this.showTimeout = window.setTimeout(
+				() => this.showTooltip(),
+				this.appTooltip?.showDelay
+			);
 		}
 	}
 
-	private setTooltipComponentProperties() {
+	private setTooltipComponentProperties(): void {
 		if (this.componentRef !== null) {
-			this.componentRef.instance.tooltip.title = this.tooltip?.title;
-			this.componentRef.instance.tooltip.position = this.tooltip?.position;
-			this.componentRef.instance.tooltip.theme = this.tooltip?.theme;
+			this.componentRef.instance.tooltip.title = this.appTooltip?.title;
+			this.componentRef.instance.tooltip.position = this.appTooltip?.position;
+			this.componentRef.instance.tooltip.theme = this.appTooltip?.theme;
 
 			const {left, right, top, bottom} =
 				this.elementRef.nativeElement.getBoundingClientRect();
 
-			switch (this.tooltip?.position) {
+			switch (this.appTooltip?.position) {
 				case TooltipPosition.BELOW: {
 					this.componentRef.instance.tooltip.left = Math.round((right - left) / 2 + left);
 					this.componentRef.instance.tooltip.top = Math.round(bottom);
@@ -87,25 +90,25 @@ export class TooltipDirective implements OnDestroy {
 		}
 	}
 
-	private showTooltip() {
+	private showTooltip(): void {
 		if (this.componentRef !== null) {
 			this.componentRef.instance.tooltip.visible = true;
 			this.cd.markForCheck();
 		}
 	}
 
-	private setHideTooltipTimeout() {
-		this.hideTimeout = window.setTimeout(() => this.destroy(), this.tooltip?.hideDelay);
+	private setHideTooltipTimeout(): void {
+		this.hideTimeout = window.setTimeout(() => this.destroy(), this.appTooltip?.hideDelay);
 	}
 
 	ngOnDestroy(): void {
 		this.destroy();
 	}
 
-	destroy(): void {
+	private destroy(): void {
 		if (this.componentRef !== null) {
 			window.clearInterval(this.showTimeout);
-			window.clearInterval(this.tooltip?.hideDelay);
+			window.clearInterval(this.appTooltip?.hideDelay);
 			this.componentRef.destroy();
 			this.componentRef = null;
 		}

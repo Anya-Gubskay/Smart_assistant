@@ -34,8 +34,7 @@ export class AssortimentEffects {
 				ofType(AssortimentActions.TYPES.INITIAL_CATEGORY_PAGE),
 				withLatestFrom(this.store.select(PagesSelectors.getIsPageNewCategory)),
 				filter(
-					([, isNewPage]: [AssortimentActions.initialCategoryPage, boolean]) =>
-						!isNewPage
+					([, isNewPage]: [AssortimentActions.initialCategoryPage, boolean]) => !isNewPage
 				),
 				tap(() => this.store.dispatch(new AssortimentActions.GetCategoryById()))
 			),

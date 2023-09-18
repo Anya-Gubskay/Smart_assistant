@@ -6,6 +6,7 @@ import {
 	Output,
 	OnChanges,
 	SimpleChanges,
+	ChangeDetectionStrategy,
 } from '@angular/core';
 import {UntypedFormBuilder, UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {SharedModule} from 'src/app/shared/shared.module';
@@ -19,7 +20,7 @@ import {UntilDestroy, untilDestroyed} from '@ngneat/until-destroy';
 	imports: [SharedModule],
 	templateUrl: './picker-date-range.component.html',
 	styleUrls: ['./picker-date-range.component.scss'],
-	providers: [],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PickerDateRangeComponent implements OnInit, OnChanges {
 	@Input() range: PickerDateRange.DateRange = new PickerDateRange.DateRange();

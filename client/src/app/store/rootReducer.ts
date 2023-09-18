@@ -6,7 +6,7 @@ import {OrderState, orderReducer} from './order/reducer';
 import {AnalyticsState, analyticsReducer} from './analytics/reducer';
 import {OverviewState, overviewReducer} from './overview/reducer';
 
-export const reducers = {
+export const reducers: Record<AppStateEnum, any> = {
 	authorization: authorizationReducer,
 	assortiment: assortimentReducer,
 	order: orderReducer,

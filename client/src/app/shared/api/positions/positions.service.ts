@@ -10,21 +10,21 @@ import {Positions} from '../../entities/positions.entity';
 export class PositionsService {
 	constructor(private http: HttpClient) {}
 
-	getPositionByCategory(categoryId: string): Observable<Positions.PositionByCategory[]> {
+	public getPositionByCategory(categoryId: string): Observable<Positions.PositionByCategory[]> {
 		return this.http.get<Positions.PositionByCategory[]>(`/api/position/${categoryId}`);
 	}
 
-	addPositionForCategory(
+	public addPositionForCategory(
 		position: Positions.PositionByCategory
 	): Observable<Positions.PositionByCategory> {
 		return this.http.post<Positions.PositionByCategory>('/api/position', position);
 	}
 
-	deletePositionForCategory(id: string): Observable<Message> {
+	public deletePositionForCategory(id: string): Observable<Message> {
 		return this.http.delete<Message>(`/api/position/${id}`);
 	}
 
-	updatePositionForCategory(
+	public updatePositionForCategory(
 		position: Positions.PositionByCategory
 	): Observable<Positions.PositionByCategory> {
 		return this.http.patch<Positions.PositionByCategory>(`/api/position/${position._id}`, {

@@ -32,8 +32,8 @@
 			[disabled]="
 				formGroup.invalid ||
 				formGroup.disabled ||
-				(data?.name === formGroup.controls.name.value &&
-					data?.cost === formGroup.controls.cost.value)
+				(data && data.name === formGroup.controls.name.value &&
+					data && data.cost === formGroup.controls.cost.value)
 			"
 		>
 			Save

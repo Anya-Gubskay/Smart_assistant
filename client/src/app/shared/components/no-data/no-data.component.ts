@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 
 export interface NoDataConfig {
 	color: string;
@@ -11,6 +11,7 @@ export interface NoDataConfig {
 	standalone: true,
 	templateUrl: './no-data.component.html',
 	styleUrls: ['./no-data.component.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppNoDataComponent {
 	@Input() size: NoDataConfig['size'] = 's';

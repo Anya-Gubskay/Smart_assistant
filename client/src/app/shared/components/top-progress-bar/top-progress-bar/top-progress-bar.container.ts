@@ -1,4 +1,4 @@
-import {Component, HostBinding, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, HostBinding, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {AppState} from 'src/app/store/rootReducer';
 import {getIsTopProgressBarVisible} from 'src/app/store/top-progress-bar/selectors';
@@ -7,6 +7,7 @@ import {getIsTopProgressBarVisible} from 'src/app/store/top-progress-bar/selecto
 	selector: 'app-top-progress-bar',
 	template: `<span class="bar"></span>`,
 	styleUrls: ['./top-progress-bar.container.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TopProgressBarContainer implements OnInit {
 	public isBarVisible!: boolean;

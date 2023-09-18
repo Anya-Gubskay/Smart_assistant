@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {CommonModule} from '@angular/common';
 import {AppState} from 'src/app/store/rootReducer';
@@ -14,6 +14,7 @@ import {OverviewSelectors} from 'src/app/store/overview/selectors';
 		[data]="data$ | async"
 		[loadingStatus]="loadingStatus$ | async"
 	></app-overview>`,
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OverviewContainer implements OnInit, OnDestroy {
 	public data$ = this.store.select(OverviewSelectors.getData);

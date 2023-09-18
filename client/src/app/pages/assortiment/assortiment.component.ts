@@ -1,5 +1,5 @@
 import {CommonModule} from '@angular/common';
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {Router} from '@angular/router';
 import {ModalComponent} from 'src/app/shared/components/modal/modal.component';
 import {TodoListComponent} from 'src/app/shared/components/todo-list/todo-list.component';
@@ -14,6 +14,7 @@ import {Categories} from 'src/app/shared/entities/categories.entity';
 	imports: [CommonModule, SharedModule, TodoListComponent, ModalComponent],
 	templateUrl: './assortiment.component.html',
 	styleUrls: ['./assortiment.component.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AssortimentComponent {
 	@Input() categories!: Categories.Category[] | null;

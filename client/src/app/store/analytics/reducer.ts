@@ -1,7 +1,7 @@
 import {LoadingStatus} from 'src/app/shared/interfaces/common.interface';
 import {status} from 'src/app/shared/constants/common.constats';
 import {AnalyticsActions} from './actions';
-import {getDataLoaderReducer} from '../store.helper';
+import {ActionWithObjectPayload, getDataLoaderReducer} from '../store.helper';
 import {AnalyticsPage} from 'src/app/shared/entities/analytics.entity';
 
 export interface AnalyticsState {
@@ -16,7 +16,7 @@ const initialState: AnalyticsState = {
 
 export function analyticsReducer(
 	state: AnalyticsState = initialState,
-	action: any
+	action: ActionWithObjectPayload
 ): AnalyticsState {
 	switch (action.type) {
 		case AnalyticsActions.TYPES.GET_DATA.REQUESTED:
