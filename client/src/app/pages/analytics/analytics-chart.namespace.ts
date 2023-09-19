@@ -1,4 +1,5 @@
-import {Highcharts} from 'highcharts/modules/map';
+import * as Highcharts from 'highcharts';
+import {Options, Point} from 'highcharts';
 import {COLOR} from 'src/app/shared/constants/common.constats';
 import {AnalyticsPage} from 'src/app/shared/entities/analytics.entity';
 
@@ -34,7 +35,7 @@ export namespace AnalyticsChart {
 		return (config.isCurrencyFormat ? '$' + value : value) as string;
 	}
 
-	export function tooltipFormatter(this: any): string {
+	export function tooltipFormatter(this: Point): string {
 		const value =
 			this.series.name === 'Revenue'
 				? `$${Highcharts.numberFormat(this.y as number, 0)}`
@@ -46,7 +47,7 @@ export namespace AnalyticsChart {
 	export function getChartOptions(
 		data: AnalyticsPage.AnalyticsChart[] = [],
 		config: Config
-	): any {
+	): Options {
 		return {
 			chart: {
 				type: 'spline',
@@ -69,10 +70,7 @@ export namespace AnalyticsChart {
 				},
 				labels: {
 					formatter: function (): string {
-						return getFormatDateAndLabel(
-							(this as {formatter: () => string; value: number}).value,
-							config
-						);
+						return getFormatDateAndLabel((this as any).value as number, config);
 					},
 				},
 			},
@@ -90,10 +88,7 @@ export namespace AnalyticsChart {
 					dataLabels: {
 						enabled: true,
 						formatter: function (): string {
-							return getFormatDateAndLabel(
-								(this as {enabled: boolean; formatter: () => string; y: number}).y,
-								config
-							);
+							return getFormatDateAndLabel((this as any).y as number, config);
 						},
 					},
 				},
