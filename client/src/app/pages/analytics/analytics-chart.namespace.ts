@@ -1,4 +1,3 @@
-import {Point} from 'angular-highcharts/lib/chart';
 import {Highcharts} from 'highcharts/modules/map';
 import {COLOR} from 'src/app/shared/constants/common.constats';
 import {AnalyticsPage} from 'src/app/shared/entities/analytics.entity';
@@ -35,7 +34,7 @@ export namespace AnalyticsChart {
 		return (config.isCurrencyFormat ? '$' + value : value) as string;
 	}
 
-	export function tooltipFormatter(this: Point): string {
+	export function tooltipFormatter(this: any): string {
 		const value =
 			this.series.name === 'Revenue'
 				? `$${Highcharts.numberFormat(this.y as number, 0)}`
